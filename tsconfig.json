@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
+    "incremental": true,
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",
-    "baseUrl": "./",
+    "baseUrl": "src",
     "paths": {
       "src/*": [
-        "./src/*"
+        "src/*"
       ]
     }
   },

@@ -1,19 +1,19 @@
-import { responses, send, sendData } from 'src/common/response.service';
+import { responses, send, sendData } from 'common/response.service';
 import express from "express";
-import { refreshAccessToken, refreshTokens } from "src/security/security.controller";
+import { Security } from 'security/security.controller';
 
 function refreshTokenRoute(request: express.Request, response: express.Response) : express.Response{
     const { UNAUTHORIZED, FORBIDDEN } = responses;
     const { token } = request.body;
+    const security = Security.get();
 
     if(!token) {
         return send(response, UNAUTHORIZED);
     }
-    if (!refreshTokens.includes(token)) {
+    if (!security.canRefreshToken(token)) {
         return send(response, FORBIDDEN);
     }
-    return send(response, refreshAccessToken(token));
+    return send(response, Security.refreshAccessToken(token));
 }
 
-
-export default (app) => app.get('/api/token', refreshTokenRoute);
+export default (app) => app.post('/api/token', refreshTokenRoute);

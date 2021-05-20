@@ -1,12 +1,17 @@
+import express from 'express';
+import { Security } from "security/security.controller";
+import {send} from "common/response.service";
 
-export function create():Function {
-    return function (req, res, next):void {
+export default function create():Function {
+    return function (req:express.Request, res: express.Response, next:express.NextFunction): express.Response{
+        const security = Security.get();
+
         const authHeader = req.headers['authorization'];
         const token = authHeader && authHeader.split(' ')[1];
-        if(token) {
+        const halt = security.shouldEndRequest(token, req.baseUrl, req.method);
+        if(halt) {
+            return send(res, halt);
         }
-
-        console.log('middleware')
         next();
     }
 }

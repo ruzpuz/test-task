@@ -1,31 +1,17 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
-
-dotenv.config();
-
-const app = express();
-const PORT = 3010;
-
-app.set('port', PORT);
+import { includeMiddlewares, includeAPIRoutes} from "./api";
 
 
-function includeAPIRoutes(): void {}
-function includeMiddlewares(): void {
-    //logger.info('Including middlewares');
-    app.use('/api/*', bodyParser.urlencoded({ extended: true, limit: '20kb' }));
+(async function init() {
+    dotenv.config();
 
-    app.use('/api/*', bodyParser.json({ limit: '20kb' }));
+    const app = express();
+    const PORT = 3010;
 
-    app.use(cookieParser());
-    //app.use('*', security());
+    app.set('port', PORT);
 
-}
-
-const server = app.listen(app.get('port'));
-
-includeAPIRoutes();
-includeMiddlewares();
-
-export default app;
+    includeMiddlewares(app);
+    await includeAPIRoutes(app);
+    const server = app.listen(app.get('port'));
+})();
