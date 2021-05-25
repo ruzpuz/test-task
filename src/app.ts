@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 import express from 'express';
 import { includeMiddlewares, includeAPIRoutes} from "./api";
 
-
 (async function init() {
     dotenv.config();
 

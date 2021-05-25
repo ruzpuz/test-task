@@ -13,7 +13,6 @@ export enum Status {
     INTERNAL_SERVER_ERROR = 500,
     NOT_IMPLEMENTED = 501
 }
-
 export enum Method {
     'CONNECT' = 'CONNECT',
     'DELETE' = 'DELETE',
@@ -33,6 +32,7 @@ export interface Response {
 export interface Responses {
     [key: string] : Response
 }
+
 export class Route {
     private method: Method;
     private pattern: string;
