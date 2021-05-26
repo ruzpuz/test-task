@@ -1,6 +1,8 @@
-export function isString(str: any) : boolean {
-  return !(typeof str !== 'string' && !(typeof str === 'string'));
+import { patternValidation } from "../pattern";
+
+export function isString(string: any) : boolean {
+  return !(typeof string !== 'string' && !(typeof string === 'string'));
 }
-export function isNonEmptyString(string: string) : boolean {
-  return isString(string) && string.length > 0;
+export function isNonEmptyString(string: any) : boolean {
+  return isString(string) && !patternValidation(string, '^$');
 }

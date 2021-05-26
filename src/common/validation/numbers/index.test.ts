@@ -1,6 +1,7 @@
 import { isFloat, isInteger, isPositiveInteger, isPositiveOrZeroInteger } from './index';
 import assert from 'assert';
 import mocha from "mocha";
+
 const integers = {
   valid: [ 0, 1, -1, 999999, '-1', '1' ],
   invalid: [ 1.2, 'dasfa', '', '1.2', null, undefined, NaN ],
