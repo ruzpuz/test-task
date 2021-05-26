@@ -9,5 +9,13 @@
   "parserOptions": {
     "project": "./tsconfig.json",
     "tsconfigRootDir": "."
-  }
+  },
+  "overrides": [{
+    "files": [ "src/common/validation/**/*.ts"],
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off"
+    }
+
+  }]
 }

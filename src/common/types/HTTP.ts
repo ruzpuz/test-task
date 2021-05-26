@@ -27,7 +27,7 @@ export enum Method {
 export interface Response {
     status: Status;
     message?: string;
-    data?: object;
+    data?: Record<string, unknown>;
 }
 export interface Responses {
     [key: string] : Response
@@ -52,9 +52,5 @@ export class Route {
     constructor(pattern: string, method: Method) {
         this.method = method;
         this.pattern = pattern;
-
-        this.matches = this.matches.bind(this);
-        this.matchesPattern = this.matchesPattern.bind(this);
-        this.matchesMethod = this.matchesMethod.bind(this);
     }
 }

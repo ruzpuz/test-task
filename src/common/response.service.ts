@@ -4,7 +4,7 @@ import {Status, Response, Responses} from './types/HTTP';
 export function send(res:express.Response, response: Response): express.Response {
     return res.status(response.status).json({ message: response.message, ...response.data});
 }
-export function sendData(res:express.Response, data: object):  express.Response {
+export function sendData(res:express.Response, data: Record<string, unknown>):  express.Response {
     return send(res, { status: Status.OK, data})
 }
 export function sendNoData(res:express.Response): express.Response{

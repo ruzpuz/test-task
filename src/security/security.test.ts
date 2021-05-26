@@ -1,3 +1,4 @@
+import mocha from 'mocha';
 import {Security} from './security.controller';
 import {Method} from '../common/types/HTTP';
 import assert from 'assert';
@@ -10,6 +11,6 @@ function registerTwoRoutes() :void {
     })
 }
 
-export default () => describe('Testing security services', () :void => {
+export default () : mocha.Suite => describe('Testing security services', () :void => {
     it('Cannot register same route twice', registerTwoRoutes);
 });

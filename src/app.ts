@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import { includeMiddlewares, includeAPIRoutes} from "./api";
 
-(async function init() {
+void (async function init() {
     dotenv.config();
 
     const app = express();
@@ -12,5 +12,6 @@ import { includeMiddlewares, includeAPIRoutes} from "./api";
 
     includeMiddlewares(app);
     await includeAPIRoutes(app);
-    const server = app.listen(app.get('port'));
+
+    app.listen(app.get('port'));
 })();

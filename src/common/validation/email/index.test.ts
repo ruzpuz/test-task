@@ -1,5 +1,6 @@
 import { isValidEmail } from './index';
-import assert from 'assert'; 
+import assert from 'assert';
+import mocha from 'mocha';
 
 const emails = {
   valid: [
@@ -17,7 +18,7 @@ const emails = {
     'firstname-lastname@example.com'
   ],
   strange: [
-    'much.“more\ unusual”@example.com',
+    'much.“more\\ unusual”@example.com',
     'very.unusual.“@”.unusual.com@example.com',
     'very.“(),:;<>[]”.VERY.“very@\\ "very”.unusual@strange.example.com'
   ],
@@ -55,7 +56,7 @@ function invalidEmails() :void {
   emails.invalid.forEach(item => assert(!isValidEmail(item)));
 }
 
-export default () => describe('Testing services for validation of emails', () :void => {
+export default () : mocha.Suite => describe('Testing services for validation of emails', () :void => {
   it('Valid emails', validEmails);
   it('Valid but strange emails', validStrangeEmails);
   it('Invalid emails', invalidEmails);

@@ -1,8 +1,8 @@
-import { responses, send, sendData } from 'common/response.service';
+import { responses, send } from 'common/response.service';
 import express from "express";
 import { Security } from 'security/security.controller';
 
-function refreshTokenRoute(request: express.Request, response: express.Response) : express.Response{
+function refreshTokenRoute(request: express.Request<never, never, { token: string}>, response: express.Response) : express.Response{
     const { UNAUTHORIZED, FORBIDDEN } = responses;
     const { token } = request.body;
     const security = Security.get();
@@ -16,4 +16,4 @@ function refreshTokenRoute(request: express.Request, response: express.Response)
     return send(response, Security.refreshAccessToken(token));
 }
 
-export default (app) => app.post('/api/token', refreshTokenRoute);
+export default (app: express.Application) : express.RequestHandler => app.post('/api/token', refreshTokenRoute);

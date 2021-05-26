@@ -31,9 +31,6 @@ class Route {
     constructor(pattern, method) {
         this.method = method;
         this.pattern = pattern;
-        this.matches = this.matches.bind(this);
-        this.matchesPattern = this.matchesPattern.bind(this);
-        this.matchesMethod = this.matchesMethod.bind(this);
     }
     matchesMethod(method) {
         return (method === this.method);

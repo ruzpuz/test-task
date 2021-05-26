@@ -411,16 +411,6 @@
         "signature": "6c9c7e459e013ddf52c70b90f88bbdd925e483ef984d80f9bffb501029974e82",
         "affectsGlobalScope": false
       },
-      "../node_modules/@types/connect/index.d.ts": {
-        "version": "81c14b89fa607b86dd726e2e3e91360cf8155ce97468404324d404a5bd65b2eb",
-        "signature": "81c14b89fa607b86dd726e2e3e91360cf8155ce97468404324d404a5bd65b2eb",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/body-parser/index.d.ts": {
-        "version": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
-        "signature": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
-        "affectsGlobalScope": false
-      },
       "../node_modules/@types/range-parser/index.d.ts": {
         "version": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
         "signature": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
@@ -446,9 +436,29 @@
         "signature": "3b02517f9be71f255eadab9892406055d069167891f1e1ea16c96c4ff1ddda01",
         "affectsGlobalScope": false
       },
+      "../node_modules/@types/connect/index.d.ts": {
+        "version": "81c14b89fa607b86dd726e2e3e91360cf8155ce97468404324d404a5bd65b2eb",
+        "signature": "81c14b89fa607b86dd726e2e3e91360cf8155ce97468404324d404a5bd65b2eb",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/body-parser/index.d.ts": {
+        "version": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
+        "signature": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
+        "affectsGlobalScope": false
+      },
       "../node_modules/@types/express/index.d.ts": {
         "version": "3b05c396564e51753e921e1cc4aae1cf7cd9be53c891cf2e81fa29f11c0bd373",
         "signature": "3b05c396564e51753e921e1cc4aae1cf7cd9be53c891cf2e81fa29f11c0bd373",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/cookie-parser/index.d.ts": {
+        "version": "8d77ed4e39114c32edc2e35b683b6f54a6b3292ecdf392e4bfc5f726734955d8",
+        "signature": "8d77ed4e39114c32edc2e35b683b6f54a6b3292ecdf392e4bfc5f726734955d8",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/jsonwebtoken/index.d.ts": {
+        "version": "82cffc446a000271c34cdf657c5aaa397c87183762431efe5e09660979cce586",
+        "signature": "82cffc446a000271c34cdf657c5aaa397c87183762431efe5e09660979cce586",
         "affectsGlobalScope": false
       },
       "../node_modules/path-pattern/node_modules/path-to-regexp/index.d.ts": {
@@ -487,33 +497,33 @@
         "affectsGlobalScope": false
       },
       "../src/common/types/http.ts": {
-        "version": "4ec34aa34ff69c7f0e1363d95936706026edf24deacff78729151bb47f0a9165",
-        "signature": "c974c9cd9d8411181b3f2b4d1afad2de2604d608659b9398f2773ae66857cbb0",
+        "version": "d19aa49210ee8f3c70056adf86708cba00e4f7eafbfec1cf203164c6bf001b43",
+        "signature": "1f8c9b067aa1be12c7b28178d18ed6b041091c3fce7feb17cdc712f234490c2d",
         "affectsGlobalScope": false
       },
       "../src/common/response.service.ts": {
-        "version": "67a6048236fa6ea789888f8f730680caadc72a73164e13bf4f68914c369b5b28",
-        "signature": "39cf9bb7777331a1f063140d2bef967c50269295bd9096b8db9d16ea72551f9b",
+        "version": "a47362a2f153c1752b6ec3b3121845eecb34f137883f21404ca4d72f920b7c14",
+        "signature": "61c71934ea27bb40a0be015af83e5d943c307e52076ab6a327fb8bdf1b610c7e",
         "affectsGlobalScope": false
       },
       "../src/security/security.controller.ts": {
-        "version": "502d459f457bff0565110cba442611b711d0d09734b5c8617046b54760054121",
-        "signature": "dee25503a1843070b35865975bc4f126bdb9879f523cd8d16c5b3c3f3a4c67a6",
+        "version": "e8bd6fb9c6f931599fc39555ab68d3471bfca9c007e115f684c51d196df6ad46",
+        "signature": "5bfafbef16c62dc3d6563a19a2e63ffb74a394c5ab2bc325710ff38f97c97e45",
         "affectsGlobalScope": false
       },
       "../src/security/security.middleware.ts": {
-        "version": "6da2974966c59ed08c4fac36630f7c88ca7e93cedbc909a6dbf665c93cc9e4da",
-        "signature": "96f3ae0fae548a9c702589639dcac59ce287cc9d80399ff6061ecf817f1408d0",
+        "version": "eb5c35fc8a2cd33bb687ac1aecd3ab0127ca7aa9bd69b6c09e1660cef4eddc04",
+        "signature": "9ef6e2c624509aa62670b0738233625e666d59634d3dd56f9b9f9ee4110130d7",
         "affectsGlobalScope": false
       },
       "../src/security/refresh-token/refresh-token.route.ts": {
-        "version": "fbd6912cfcbd13750a33037ee133a2e4ab0f406cc5039e0507ef2f3a23da0248",
-        "signature": "b29c602e97749a8df6ddc4e22585ffdfe6a4324f226c916e62645543211c5780",
+        "version": "2f4a9fd56b5ae41fc7c8a914bcbf391e6ac342bbbe5e6d3c7ba8979868ca2e2f",
+        "signature": "065b8b15dd5a318b09f5193fe8e9a3a892f507f3b978f87e68d1364b0ec185ff",
         "affectsGlobalScope": false
       },
       "../src/api.ts": {
-        "version": "36a766afddafcbe8823e0d7f7e5c1bea5e8a71c75c390bf26000e6ba44a93899",
-        "signature": "f00ec76441449b8e8037b771d9ba2bdc988c0b0a9a030d19d7cc27bb7e5f72ba",
+        "version": "0cf768cdb2aa8408589fe2c832b1acc95cd7380e165587def714b4f1de11a62b",
+        "signature": "1dcdab2914e575681256d472fb51520985c65d2eac060b16fc7ee5c181a6c80f",
         "affectsGlobalScope": false
       },
       "../node_modules/dotenv/types/index.d.ts": {
@@ -522,13 +532,88 @@
         "affectsGlobalScope": false
       },
       "../src/app.ts": {
-        "version": "ec2d6db5e903fa2e7de1dfd8ad7e499d792edf88fb17951a67e29836c2cccbb8",
+        "version": "9bb9c6cd5b17503c88049ebed608983a72c073833432b9fb3f4240e30c91dd0f",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "affectsGlobalScope": false
+      },
+      "../src/common/validation/pattern/index.ts": {
+        "version": "7c5fd9109d8043fb556c27506eb82da64825e5c11a9c0213781191fe78f162db",
+        "signature": "d65b0d017103798c0c17c80c45ad020eb161eea6328ea5be5b1d2fc29b6b17fd",
+        "affectsGlobalScope": false
+      },
+      "../src/common/validation/string/index.ts": {
+        "version": "a3e22d920907361cb2cf27fbc13ae03665c544fd05cab45cf712a46961f28340",
+        "signature": "53ffba7f40f845b9f6a52630bea43a57deae61045bf8ad7893f939912733a27a",
+        "affectsGlobalScope": false
+      },
+      "../src/common/validation/email/index.ts": {
+        "version": "5aa77a5085ee93dfb8d6b4e6fad350cc05be25bd4e139eee0cbc5455eda79a4e",
+        "signature": "529245f30b05430f064cf913166f77e370b14b41986c007633e7fa17d310b1c0",
+        "affectsGlobalScope": false
+      },
+      "../src/common/validation/numbers/index.ts": {
+        "version": "fe353da606ed440c5218555a58929f109b7788a2e9ccadf0035912f1e7f37691",
+        "signature": "6ed1a1290302677a87db6438673df7f3a14aa1898fcf8bf8357fd543f2e83d99",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/uuid/index.d.ts": {
+        "version": "96b49a9de749afcf92b5bce1d8cc42cfae6816cdf5ea36584fd9256b8b2e5292",
+        "signature": "96b49a9de749afcf92b5bce1d8cc42cfae6816cdf5ea36584fd9256b8b2e5292",
+        "affectsGlobalScope": false
+      },
+      "../src/common/validation/uuid/index.ts": {
+        "version": "3971e083af7393f0702fa5c36cbc69c967f86812aeedf952182fac72f1ba7d14",
+        "signature": "b9c381dcd649c14c463886f9322d74b7ec0176e0d5b171965698d83a79f7a9e3",
+        "affectsGlobalScope": false
+      },
+      "../src/security/signup/signup.route.ts": {
+        "version": "d3c32feb2acffa5f1b7743457621bc6a97d133c173665fbde3e8b2ef8f595023",
+        "signature": "b29c602e97749a8df6ddc4e22585ffdfe6a4324f226c916e62645543211c5780",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/istanbul-lib-coverage/index.d.ts": {
+        "version": "de18acda71730bac52f4b256ce7511bb56cc21f6f114c59c46782eff2f632857",
+        "signature": "de18acda71730bac52f4b256ce7511bb56cc21f6f114c59c46782eff2f632857",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/istanbul-lib-report/index.d.ts": {
+        "version": "7eb06594824ada538b1d8b48c3925a83e7db792f47a081a62cf3e5c4e23cf0ee",
+        "signature": "7eb06594824ada538b1d8b48c3925a83e7db792f47a081a62cf3e5c4e23cf0ee",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/istanbul-reports/index.d.ts": {
+        "version": "905c3e8f7ddaa6c391b60c05b2f4c3931d7127ad717a080359db3df510b7bdab",
+        "signature": "905c3e8f7ddaa6c391b60c05b2f4c3931d7127ad717a080359db3df510b7bdab",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/json-schema/index.d.ts": {
         "version": "3a1e165b22a1cb8df82c44c9a09502fd2b33f160cd277de2cd3a055d8e5c6b27",
         "signature": "3a1e165b22a1cb8df82c44c9a09502fd2b33f160cd277de2cd3a055d8e5c6b27",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/json5/index.d.ts": {
+        "version": "96d14f21b7652903852eef49379d04dbda28c16ed36468f8c9fa08f7c14c9538",
+        "signature": "96d14f21b7652903852eef49379d04dbda28c16ed36468f8c9fa08f7c14c9538",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/mocha/index.d.ts": {
+        "version": "0359800d3b440f8515001431cde1500944e156040577425eb3f7b80af0846612",
+        "signature": "0359800d3b440f8515001431cde1500944e156040577425eb3f7b80af0846612",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@types/stack-utils/index.d.ts": {
+        "version": "c6c4fea9acc55d5e38ff2b70d57ab0b5cdbd08f8bc5d7a226e322cea128c5b57",
+        "signature": "c6c4fea9acc55d5e38ff2b70d57ab0b5cdbd08f8bc5d7a226e322cea128c5b57",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/yargs-parser/index.d.ts": {
+        "version": "3bdd93ec24853e61bfa4c63ebaa425ff3e474156e87a47d90122e1d8cc717c1f",
+        "signature": "3bdd93ec24853e61bfa4c63ebaa425ff3e474156e87a47d90122e1d8cc717c1f",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/yargs/index.d.ts": {
+        "version": "5a2a25feca554a8f289ed62114771b8c63d89f2b58325e2f8b7043e4e0160d11",
+        "signature": "5a2a25feca554a8f289ed62114771b8c63d89f2b58325e2f8b7043e4e0160d11",
         "affectsGlobalScope": false
       }
     },
@@ -559,6 +644,9 @@
         "../node_modules/@types/node/http.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../node_modules/@types/cookie-parser/index.d.ts": [
+        "../node_modules/@types/express/index.d.ts"
+      ],
       "../node_modules/@types/express-serve-static-core/index.d.ts": [
         "../node_modules/@types/node/events.d.ts",
         "../node_modules/@types/node/http.d.ts",
@@ -571,6 +659,15 @@
         "../node_modules/@types/express-serve-static-core/index.d.ts",
         "../node_modules/@types/qs/index.d.ts",
         "../node_modules/@types/serve-static/index.d.ts"
+      ],
+      "../node_modules/@types/istanbul-lib-report/index.d.ts": [
+        "../node_modules/@types/istanbul-lib-coverage/index.d.ts"
+      ],
+      "../node_modules/@types/istanbul-reports/index.d.ts": [
+        "../node_modules/@types/istanbul-lib-report/index.d.ts"
+      ],
+      "../node_modules/@types/jsonwebtoken/index.d.ts": [
+        "../node_modules/@types/node/index.d.ts"
       ],
       "../node_modules/@types/node/assert/strict.d.ts": [
         "../node_modules/@types/node/assert.d.ts"
@@ -758,6 +855,9 @@
         "../node_modules/@types/mime/index.d.ts",
         "../node_modules/@types/node/http.d.ts",
         "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@types/yargs/index.d.ts": [
+        "../node_modules/@types/yargs-parser/index.d.ts"
       ],
       "../node_modules/dotenv/types/index.d.ts": [
         "../node_modules/@types/node/index.d.ts"
@@ -782,6 +882,8 @@
       ],
       "../src/api.ts": [
         "../node_modules/@types/body-parser/index.d.ts",
+        "../node_modules/@types/cookie-parser/index.d.ts",
+        "../node_modules/@types/express/index.d.ts",
         "../src/security/refresh-token/refresh-token.route.ts",
         "../src/security/security.middleware.ts"
       ],
@@ -797,16 +899,30 @@
       "../src/common/types/http.ts": [
         "../node_modules/path-pattern/lib/index.d.ts"
       ],
+      "../src/common/validation/email/index.ts": [
+        "../src/common/validation/pattern/index.ts",
+        "../src/common/validation/string/index.ts"
+      ],
+      "../src/common/validation/uuid/index.ts": [
+        "../node_modules/@types/uuid/index.d.ts",
+        "../src/common/validation/string/index.ts"
+      ],
       "../src/security/refresh-token/refresh-token.route.ts": [
         "../node_modules/@types/express/index.d.ts",
         "../src/common/response.service.ts",
         "../src/security/security.controller.ts"
       ],
       "../src/security/security.controller.ts": [
+        "../node_modules/@types/jsonwebtoken/index.d.ts",
         "../src/common/response.service.ts",
         "../src/common/types/http.ts"
       ],
       "../src/security/security.middleware.ts": [
+        "../node_modules/@types/express/index.d.ts",
+        "../src/common/response.service.ts",
+        "../src/security/security.controller.ts"
+      ],
+      "../src/security/signup/signup.route.ts": [
         "../node_modules/@types/express/index.d.ts",
         "../src/common/response.service.ts",
         "../src/security/security.controller.ts"
@@ -822,6 +938,9 @@
         "../node_modules/@types/node/http.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../node_modules/@types/cookie-parser/index.d.ts": [
+        "../node_modules/@types/express/index.d.ts"
+      ],
       "../node_modules/@types/express-serve-static-core/index.d.ts": [
         "../node_modules/@types/node/events.d.ts",
         "../node_modules/@types/node/http.d.ts",
@@ -834,6 +953,15 @@
         "../node_modules/@types/express-serve-static-core/index.d.ts",
         "../node_modules/@types/qs/index.d.ts",
         "../node_modules/@types/serve-static/index.d.ts"
+      ],
+      "../node_modules/@types/istanbul-lib-report/index.d.ts": [
+        "../node_modules/@types/istanbul-lib-coverage/index.d.ts"
+      ],
+      "../node_modules/@types/istanbul-reports/index.d.ts": [
+        "../node_modules/@types/istanbul-lib-report/index.d.ts"
+      ],
+      "../node_modules/@types/jsonwebtoken/index.d.ts": [
+        "../node_modules/@types/node/index.d.ts"
       ],
       "../node_modules/@types/node/assert/strict.d.ts": [
         "../node_modules/@types/node/assert.d.ts"
@@ -1022,6 +1150,9 @@
         "../node_modules/@types/node/http.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../node_modules/@types/yargs/index.d.ts": [
+        "../node_modules/@types/yargs-parser/index.d.ts"
+      ],
       "../node_modules/dotenv/types/index.d.ts": [
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -1043,21 +1174,37 @@
         "../node_modules/path-pattern/lib/pathpattern.d.ts",
         "../node_modules/path-pattern/lib/types.d.ts"
       ],
+      "../src/api.ts": [
+        "../node_modules/@types/express/index.d.ts"
+      ],
       "../src/common/response.service.ts": [
         "../node_modules/@types/express/index.d.ts",
         "../src/common/types/http.ts"
       ],
+      "../src/security/refresh-token/refresh-token.route.ts": [
+        "../node_modules/@types/express/index.d.ts"
+      ],
       "../src/security/security.controller.ts": [
         "../src/common/types/http.ts"
+      ],
+      "../src/security/security.middleware.ts": [
+        "../node_modules/@types/express/index.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
       "../node_modules/@types/body-parser/index.d.ts",
       "../node_modules/@types/connect/index.d.ts",
+      "../node_modules/@types/cookie-parser/index.d.ts",
       "../node_modules/@types/express-serve-static-core/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
+      "../node_modules/@types/istanbul-lib-coverage/index.d.ts",
+      "../node_modules/@types/istanbul-lib-report/index.d.ts",
+      "../node_modules/@types/istanbul-reports/index.d.ts",
       "../node_modules/@types/json-schema/index.d.ts",
+      "../node_modules/@types/json5/index.d.ts",
+      "../node_modules/@types/jsonwebtoken/index.d.ts",
       "../node_modules/@types/mime/index.d.ts",
+      "../node_modules/@types/mocha/index.d.ts",
       "../node_modules/@types/node/assert.d.ts",
       "../node_modules/@types/node/assert/strict.d.ts",
       "../node_modules/@types/node/async_hooks.d.ts",
@@ -1111,6 +1258,10 @@
       "../node_modules/@types/qs/index.d.ts",
       "../node_modules/@types/range-parser/index.d.ts",
       "../node_modules/@types/serve-static/index.d.ts",
+      "../node_modules/@types/stack-utils/index.d.ts",
+      "../node_modules/@types/uuid/index.d.ts",
+      "../node_modules/@types/yargs-parser/index.d.ts",
+      "../node_modules/@types/yargs/index.d.ts",
       "../node_modules/dotenv/types/index.d.ts",
       "../node_modules/path-pattern/lib/index.d.ts",
       "../node_modules/path-pattern/lib/matchoneof.d.ts",
@@ -1155,9 +1306,15 @@
       "../src/app.ts",
       "../src/common/response.service.ts",
       "../src/common/types/http.ts",
+      "../src/common/validation/email/index.ts",
+      "../src/common/validation/numbers/index.ts",
+      "../src/common/validation/pattern/index.ts",
+      "../src/common/validation/string/index.ts",
+      "../src/common/validation/uuid/index.ts",
       "../src/security/refresh-token/refresh-token.route.ts",
       "../src/security/security.controller.ts",
-      "../src/security/security.middleware.ts"
+      "../src/security/security.middleware.ts",
+      "../src/security/signup/signup.route.ts"
     ]
   },
   "version": "4.2.4"

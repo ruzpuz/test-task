@@ -18,13 +18,13 @@ export class Security {
             return null;
         }
     }
-    public static generateAccessToken(user) {
+    public static generateAccessToken(user: any): string {
         return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15s' })
     }
     public static refreshAccessToken(token :string): Response {
         try {
-            const user = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
-            const accessToken = Security.generateAccessToken({ name: user.name });
+            const user: any = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+            const accessToken = Security.generateAccessToken(user);
 
             return { status: Status.OK, data: { accessToken } };
         } catch (error) {

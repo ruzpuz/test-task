@@ -1,5 +1,6 @@
 import { isString, isNonEmptyString } from './index';
 import assert from 'assert';
+import mocha from "mocha";
 
 const strings = {
   invalid: [ null, undefined, NaN, 1.2, 13 ],
@@ -19,7 +20,7 @@ function validEmpty() :void {
   assert(!isNonEmptyString(strings.validEmpty));
 }
 
-export default () => describe('Testing services for validation of strings', () :void => {
+export default () :mocha.Suite  => describe('Testing services for validation of strings', () :void => {
 
   it('Valid strings', validStrings);
   it('Invalid strings', invalidStrings);

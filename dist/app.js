@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
 const api_1 = require("./api");
-(function init() {
+void (function init() {
     return __awaiter(this, void 0, void 0, function* () {
         dotenv_1.default.config();
         const app = express_1.default();
@@ -23,7 +23,7 @@ const api_1 = require("./api");
         app.set('port', PORT);
         api_1.includeMiddlewares(app);
         yield api_1.includeAPIRoutes(app);
-        const server = app.listen(app.get('port'));
+        app.listen(app.get('port'));
     });
 })();
 //# sourceMappingURL=app.js.map

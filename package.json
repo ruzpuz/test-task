@@ -5,20 +5,23 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
+    "start": "tsc && NODE_PATH=./dist node dist/app.js",
     "knex": "knex --esm",
     "setup-dependancies": "docker-compose up -d",
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint-test": "eslint src/**/*.ts",
-    "unit-test": "NODE_PATH=./src ts-mocha -p tsconfig.json src/app.test.ts"
+    "lint-test": "find ./src -name '*.ts' | xargs eslint",
+    "unit-test": "NODE_PATH=./src ts-mocha -p tsconfig.json tests/unit.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.2",
     "@types/expect": "^24.3.0",
     "@types/express": "^4.17.11",
+    "@types/jsonwebtoken": "^8.5.1",
     "@types/mocha": "^8.2.2",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
     "assert": "^2.0.0",

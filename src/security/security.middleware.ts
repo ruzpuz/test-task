@@ -2,7 +2,7 @@ import express from 'express';
 import { Security } from "security/security.controller";
 import {send} from "common/response.service";
 
-export default function create():Function {
+export default function create():express.RequestHandler {
     return function (req:express.Request, res: express.Response, next:express.NextFunction): express.Response{
         const security = Security.get();
 
@@ -13,6 +13,7 @@ export default function create():Function {
             return send(res, halt);
         }
         next();
+        return null;
     }
 }
 

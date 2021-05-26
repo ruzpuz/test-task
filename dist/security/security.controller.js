@@ -30,7 +30,7 @@ class Security {
     static refreshAccessToken(token) {
         try {
             const user = jsonwebtoken_1.default.verify(token, process.env.REFRESH_TOKEN_SECRET);
-            const accessToken = Security.generateAccessToken({ name: user.name });
+            const accessToken = Security.generateAccessToken(user);
             return { status: HTTP_1.Status.OK, data: { accessToken } };
         }
         catch (error) {

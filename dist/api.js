@@ -47,8 +47,7 @@ function includeAPIRoutes(app) {
     return __awaiter(this, void 0, void 0, function* () {
         return Promise.all([
             Promise.resolve().then(() => __importStar(require('security/refresh-token/refresh-token.route')))
-        ])
-            .then((routes) => routes.forEach(({ default: route }) => {
+        ]).then((routes) => routes.forEach(({ default: route }) => {
             route(app);
         }));
     });

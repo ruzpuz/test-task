@@ -12,6 +12,7 @@ function create() {
             return response_service_1.send(res, halt);
         }
         next();
+        return null;
     };
 }
 exports.default = create;
