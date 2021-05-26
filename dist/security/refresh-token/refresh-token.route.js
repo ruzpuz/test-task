@@ -6,6 +6,7 @@ function refreshTokenRoute(request, response) {
     const { UNAUTHORIZED, FORBIDDEN } = response_service_1.responses;
     const { token } = request.body;
     const security = security_controller_1.Security.get();
+    console.log('a');
     if (!token) {
         return response_service_1.send(response, UNAUTHORIZED);
     }

@@ -24,4 +24,4 @@ void Promise.all([
     Promise.resolve().then(() => __importStar(require('common/validation/uuid/index.test'))),
     Promise.resolve().then(() => __importStar(require('security/security.test')))
 ]).then((tests) => tests.forEach(({ default: test }) => test()));
-//# sourceMappingURL=app.test.js.map
+//# sourceMappingURL=unit.js.map

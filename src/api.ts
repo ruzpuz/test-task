@@ -14,11 +14,11 @@ export function includeMiddlewares(app: express.Application): void {
 }
 export async function includeAPIRoutes (app: express.Application): Promise<void> {
     return Promise.all([
-        import('security/refresh-token/refresh-token.route')
+        import('security/refresh-token/refresh-token.route'),
+        import('signup/signup.route'),
     ]).then(
-        (routes) =>
-            routes.forEach(({ default: route }) => {
-                route(app);
-        })
-    );
+        (routes) => routes.forEach(({ default: route }) => route(app))
+    ).catch(error => {
+        console.log(error);
+    });
 }

@@ -502,7 +502,7 @@
         "affectsGlobalScope": false
       },
       "../src/common/response.service.ts": {
-        "version": "a47362a2f153c1752b6ec3b3121845eecb34f137883f21404ca4d72f920b7c14",
+        "version": "4f2695e3ce66aeae41b70087ebfede7167ee6fc156c515d349cd560b2d095ccb",
         "signature": "61c71934ea27bb40a0be015af83e5d943c307e52076ab6a327fb8bdf1b610c7e",
         "affectsGlobalScope": false
       },
@@ -516,13 +516,48 @@
         "signature": "9ef6e2c624509aa62670b0738233625e666d59634d3dd56f9b9f9ee4110130d7",
         "affectsGlobalScope": false
       },
+      "../src/security/refresh-token/refresh-token.dto.ts": {
+        "version": "0434ed6b5ec196d23a767c826bd18eb107fa75e6455beaa1002b9621d1511dea",
+        "signature": "09a28c2382c999d3c0805344ea0948fc90435fc46a40243bd9eaa2cb40a9eef7",
+        "affectsGlobalScope": false
+      },
       "../src/security/refresh-token/refresh-token.route.ts": {
-        "version": "2f4a9fd56b5ae41fc7c8a914bcbf391e6ac342bbbe5e6d3c7ba8979868ca2e2f",
+        "version": "7b441f2e5e5a2fed55f49758cdc9c60f90599ef20e7a8bd1e5684a5c105dbccd",
+        "signature": "065b8b15dd5a318b09f5193fe8e9a3a892f507f3b978f87e68d1364b0ec185ff",
+        "affectsGlobalScope": false
+      },
+      "../src/signup/signup.dto.ts": {
+        "version": "1b10572efc0f38aa184793c67729354bf64c795a123370acca90afc516550e7f",
+        "signature": "9197ca09f557e1579080d4d050a44d2c6d1a40111e898d82f7f4f8f49068f40b",
+        "affectsGlobalScope": false
+      },
+      "../src/common/validation/pattern/index.ts": {
+        "version": "7c5fd9109d8043fb556c27506eb82da64825e5c11a9c0213781191fe78f162db",
+        "signature": "d65b0d017103798c0c17c80c45ad020eb161eea6328ea5be5b1d2fc29b6b17fd",
+        "affectsGlobalScope": false
+      },
+      "../src/common/validation/string/index.ts": {
+        "version": "8af64414675240367360e047e28542ad14cd98304ce0966bcd649b8126576d43",
+        "signature": "4524abfbb502c3595b4932e6e7cbe6cf6870a6dd55ede5cc72978914a6d39614",
+        "affectsGlobalScope": false
+      },
+      "../src/common/validation/email/index.ts": {
+        "version": "9708757a7425e8cf9eb75eb9a0b76d9e1bdb636a466b9ed9aee434422a4a0a31",
+        "signature": "840e236a14e68154df9f6d47e7e249dbcc4dd58c3aba708555a966cd10399121",
+        "affectsGlobalScope": false
+      },
+      "../src/signup/signup.controller.ts": {
+        "version": "a76a3a7b250838c240aa46531df2402abce3e2b359b75f35b282a7642579d148",
+        "signature": "305e07f2be4ea97669c5d111766051184079a7291de7a24ba9ed8096c57491bd",
+        "affectsGlobalScope": false
+      },
+      "../src/signup/signup.route.ts": {
+        "version": "89dae2f289498e1ebcfc255acc42be88b7954fef1155b316ebff79b42884e1b9",
         "signature": "065b8b15dd5a318b09f5193fe8e9a3a892f507f3b978f87e68d1364b0ec185ff",
         "affectsGlobalScope": false
       },
       "../src/api.ts": {
-        "version": "0cf768cdb2aa8408589fe2c832b1acc95cd7380e165587def714b4f1de11a62b",
+        "version": "eb04d81853b65d05b64540dea229560e7f7d8d184af160e6a03c282a73e4a8ea",
         "signature": "1dcdab2914e575681256d472fb51520985c65d2eac060b16fc7ee5c181a6c80f",
         "affectsGlobalScope": false
       },
@@ -532,23 +567,8 @@
         "affectsGlobalScope": false
       },
       "../src/app.ts": {
-        "version": "9bb9c6cd5b17503c88049ebed608983a72c073833432b9fb3f4240e30c91dd0f",
+        "version": "aa47e094b7ea62b04a4c86cd5fabfc24360b00065eaf71df59abb82c1b0a4578",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
-        "affectsGlobalScope": false
-      },
-      "../src/common/validation/pattern/index.ts": {
-        "version": "7c5fd9109d8043fb556c27506eb82da64825e5c11a9c0213781191fe78f162db",
-        "signature": "d65b0d017103798c0c17c80c45ad020eb161eea6328ea5be5b1d2fc29b6b17fd",
-        "affectsGlobalScope": false
-      },
-      "../src/common/validation/string/index.ts": {
-        "version": "a3e22d920907361cb2cf27fbc13ae03665c544fd05cab45cf712a46961f28340",
-        "signature": "53ffba7f40f845b9f6a52630bea43a57deae61045bf8ad7893f939912733a27a",
-        "affectsGlobalScope": false
-      },
-      "../src/common/validation/email/index.ts": {
-        "version": "5aa77a5085ee93dfb8d6b4e6fad350cc05be25bd4e139eee0cbc5455eda79a4e",
-        "signature": "529245f30b05430f064cf913166f77e370b14b41986c007633e7fa17d310b1c0",
         "affectsGlobalScope": false
       },
       "../src/common/validation/numbers/index.ts": {
@@ -562,14 +582,44 @@
         "affectsGlobalScope": false
       },
       "../src/common/validation/uuid/index.ts": {
-        "version": "3971e083af7393f0702fa5c36cbc69c967f86812aeedf952182fac72f1ba7d14",
+        "version": "d12ad4920305cede1818a37cefd038bc53375c1c66efdd1758b50558dc28b114",
         "signature": "b9c381dcd649c14c463886f9322d74b7ec0176e0d5b171965698d83a79f7a9e3",
         "affectsGlobalScope": false
       },
-      "../src/security/signup/signup.route.ts": {
-        "version": "d3c32feb2acffa5f1b7743457621bc6a97d133c173665fbde3e8b2ef8f595023",
-        "signature": "b29c602e97749a8df6ddc4e22585ffdfe6a4324f226c916e62645543211c5780",
+      "../node_modules/@types/mocha/index.d.ts": {
+        "version": "0359800d3b440f8515001431cde1500944e156040577425eb3f7b80af0846612",
+        "signature": "0359800d3b440f8515001431cde1500944e156040577425eb3f7b80af0846612",
+        "affectsGlobalScope": true
+      },
+      "../src/common/validation/email/index.test.ts": {
+        "version": "d2f2db46d44db4a6bcaf4bf037d8bc18ded695b75d7e44327976b0e61921b641",
+        "signature": "c63172cedb5b49524c68aa42cc32577cf1e8d164097851826d4860f7fab0c866",
         "affectsGlobalScope": false
+      },
+      "../src/common/validation/numbers/index.test.ts": {
+        "version": "8498f0b1a8039d055b10b9d6d71d409d0a111fb8f25b2ab010863a6a34e9cc80",
+        "signature": "f6709a979053c539ce973f645faaa828d96e0cf6356033c3c4c633d65131a4cf",
+        "affectsGlobalScope": false
+      },
+      "../src/common/validation/string/index.test.ts": {
+        "version": "5aba3669be137eafaad9c121edb0654ebf14bd5ec3385340b96370df48da37a7",
+        "signature": "f6709a979053c539ce973f645faaa828d96e0cf6356033c3c4c633d65131a4cf",
+        "affectsGlobalScope": false
+      },
+      "../src/common/validation/uuid/index.test.ts": {
+        "version": "926616797f5222e9bffcc256cb46dbe30fdb2c4012c6ddceb55b62f990f7532b",
+        "signature": "f6709a979053c539ce973f645faaa828d96e0cf6356033c3c4c633d65131a4cf",
+        "affectsGlobalScope": false
+      },
+      "../src/security/security.test.ts": {
+        "version": "c3531fa27d1532b4811ae34c4b1c7ce2f2f6e7752f6a8bec04805186bc08e09a",
+        "signature": "c63172cedb5b49524c68aa42cc32577cf1e8d164097851826d4860f7fab0c866",
+        "affectsGlobalScope": false
+      },
+      "../src/tests/unit.ts": {
+        "version": "66d61c8bbe5822050f059ee32eb8eb4c34b14c1e20ff0e0dc1a67714ce314f53",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "affectsGlobalScope": true
       },
       "../node_modules/@types/istanbul-lib-coverage/index.d.ts": {
         "version": "de18acda71730bac52f4b256ce7511bb56cc21f6f114c59c46782eff2f632857",
@@ -595,11 +645,6 @@
         "version": "96d14f21b7652903852eef49379d04dbda28c16ed36468f8c9fa08f7c14c9538",
         "signature": "96d14f21b7652903852eef49379d04dbda28c16ed36468f8c9fa08f7c14c9538",
         "affectsGlobalScope": false
-      },
-      "../node_modules/@types/mocha/index.d.ts": {
-        "version": "0359800d3b440f8515001431cde1500944e156040577425eb3f7b80af0846612",
-        "signature": "0359800d3b440f8515001431cde1500944e156040577425eb3f7b80af0846612",
-        "affectsGlobalScope": true
       },
       "../node_modules/@types/stack-utils/index.d.ts": {
         "version": "c6c4fea9acc55d5e38ff2b70d57ab0b5cdbd08f8bc5d7a226e322cea128c5b57",
@@ -885,7 +930,8 @@
         "../node_modules/@types/cookie-parser/index.d.ts",
         "../node_modules/@types/express/index.d.ts",
         "../src/security/refresh-token/refresh-token.route.ts",
-        "../src/security/security.middleware.ts"
+        "../src/security/security.middleware.ts",
+        "../src/signup/signup.route.ts"
       ],
       "../src/app.ts": [
         "../node_modules/@types/express/index.d.ts",
@@ -899,17 +945,42 @@
       "../src/common/types/http.ts": [
         "../node_modules/path-pattern/lib/index.d.ts"
       ],
+      "../src/common/validation/email/index.test.ts": [
+        "../node_modules/@types/mocha/index.d.ts",
+        "../node_modules/@types/node/assert.d.ts",
+        "../src/common/validation/email/index.ts"
+      ],
       "../src/common/validation/email/index.ts": [
         "../src/common/validation/pattern/index.ts",
         "../src/common/validation/string/index.ts"
       ],
+      "../src/common/validation/numbers/index.test.ts": [
+        "../node_modules/@types/mocha/index.d.ts",
+        "../node_modules/@types/node/assert.d.ts",
+        "../src/common/validation/numbers/index.ts"
+      ],
+      "../src/common/validation/string/index.test.ts": [
+        "../node_modules/@types/mocha/index.d.ts",
+        "../node_modules/@types/node/assert.d.ts",
+        "../src/common/validation/string/index.ts"
+      ],
+      "../src/common/validation/string/index.ts": [
+        "../src/common/validation/pattern/index.ts"
+      ],
+      "../src/common/validation/uuid/index.test.ts": [
+        "../node_modules/@types/mocha/index.d.ts",
+        "../node_modules/@types/node/assert.d.ts",
+        "../src/common/validation/uuid/index.ts"
+      ],
       "../src/common/validation/uuid/index.ts": [
         "../node_modules/@types/uuid/index.d.ts",
+        "../src/common/validation/pattern/index.ts",
         "../src/common/validation/string/index.ts"
       ],
       "../src/security/refresh-token/refresh-token.route.ts": [
         "../node_modules/@types/express/index.d.ts",
         "../src/common/response.service.ts",
+        "../src/security/refresh-token/refresh-token.dto.ts",
         "../src/security/security.controller.ts"
       ],
       "../src/security/security.controller.ts": [
@@ -922,10 +993,29 @@
         "../src/common/response.service.ts",
         "../src/security/security.controller.ts"
       ],
-      "../src/security/signup/signup.route.ts": [
+      "../src/security/security.test.ts": [
+        "../node_modules/@types/mocha/index.d.ts",
+        "../node_modules/@types/node/assert.d.ts",
+        "../src/common/types/http.ts",
+        "../src/security/security.controller.ts"
+      ],
+      "../src/signup/signup.controller.ts": [
+        "../src/common/validation/email/index.ts",
+        "../src/common/validation/string/index.ts",
+        "../src/signup/signup.dto.ts"
+      ],
+      "../src/signup/signup.route.ts": [
         "../node_modules/@types/express/index.d.ts",
         "../src/common/response.service.ts",
-        "../src/security/security.controller.ts"
+        "../src/signup/signup.controller.ts",
+        "../src/signup/signup.dto.ts"
+      ],
+      "../src/tests/unit.ts": [
+        "../src/common/validation/email/index.test.ts",
+        "../src/common/validation/numbers/index.test.ts",
+        "../src/common/validation/string/index.test.ts",
+        "../src/common/validation/uuid/index.test.ts",
+        "../src/security/security.test.ts"
       ]
     },
     "exportedModulesMap": {
@@ -1181,6 +1271,18 @@
         "../node_modules/@types/express/index.d.ts",
         "../src/common/types/http.ts"
       ],
+      "../src/common/validation/email/index.test.ts": [
+        "../node_modules/@types/mocha/index.d.ts"
+      ],
+      "../src/common/validation/numbers/index.test.ts": [
+        "../node_modules/@types/mocha/index.d.ts"
+      ],
+      "../src/common/validation/string/index.test.ts": [
+        "../node_modules/@types/mocha/index.d.ts"
+      ],
+      "../src/common/validation/uuid/index.test.ts": [
+        "../node_modules/@types/mocha/index.d.ts"
+      ],
       "../src/security/refresh-token/refresh-token.route.ts": [
         "../node_modules/@types/express/index.d.ts"
       ],
@@ -1188,6 +1290,15 @@
         "../src/common/types/http.ts"
       ],
       "../src/security/security.middleware.ts": [
+        "../node_modules/@types/express/index.d.ts"
+      ],
+      "../src/security/security.test.ts": [
+        "../node_modules/@types/mocha/index.d.ts"
+      ],
+      "../src/signup/signup.controller.ts": [
+        "../src/signup/signup.dto.ts"
+      ],
+      "../src/signup/signup.route.ts": [
         "../node_modules/@types/express/index.d.ts"
       ]
     },
@@ -1306,15 +1417,24 @@
       "../src/app.ts",
       "../src/common/response.service.ts",
       "../src/common/types/http.ts",
+      "../src/common/validation/email/index.test.ts",
       "../src/common/validation/email/index.ts",
+      "../src/common/validation/numbers/index.test.ts",
       "../src/common/validation/numbers/index.ts",
       "../src/common/validation/pattern/index.ts",
+      "../src/common/validation/string/index.test.ts",
       "../src/common/validation/string/index.ts",
+      "../src/common/validation/uuid/index.test.ts",
       "../src/common/validation/uuid/index.ts",
+      "../src/security/refresh-token/refresh-token.dto.ts",
       "../src/security/refresh-token/refresh-token.route.ts",
       "../src/security/security.controller.ts",
       "../src/security/security.middleware.ts",
-      "../src/security/signup/signup.route.ts"
+      "../src/security/security.test.ts",
+      "../src/signup/signup.controller.ts",
+      "../src/signup/signup.dto.ts",
+      "../src/signup/signup.route.ts",
+      "../src/tests/unit.ts"
     ]
   },
   "version": "4.2.4"

@@ -5,13 +5,14 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
+    "tsc": "tsc",
     "start": "tsc && NODE_PATH=./dist node dist/app.js",
     "knex": "knex --esm",
     "setup-dependancies": "docker-compose up -d",
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint-test": "find ./src -name '*.ts' | xargs eslint",
-    "unit-test": "NODE_PATH=./src ts-mocha -p tsconfig.json tests/unit.ts"
+    "unit-test": "NODE_PATH=./src ts-mocha -p tsconfig.json src/tests/unit.ts"
   },
   "author": "",
   "license": "ISC",

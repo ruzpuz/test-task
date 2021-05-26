@@ -1,11 +1,13 @@
 import { responses, send } from 'common/response.service';
 import express from "express";
 import { Security } from 'security/security.controller';
+import { Body } from './refresh-token.dto';
 
-function refreshTokenRoute(request: express.Request<never, never, { token: string}>, response: express.Response) : express.Response{
+function refreshTokenRoute(request: express.Request<never, never, Body>, response: express.Response) : express.Response{
     const { UNAUTHORIZED, FORBIDDEN } = responses;
     const { token } = request.body;
     const security = Security.get();
+    console.log('a')
 
     if(!token) {
         return send(response, UNAUTHORIZED);

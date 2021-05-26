@@ -14,5 +14,7 @@ export function sendNoData(res:express.Response): express.Response{
 export const responses: Responses = {
     UNAUTHORIZED: { status: Status.UNAUTHORIZED, message: 'You are not authorized to access this' },
     FORBIDDEN: { status: Status.FORBIDDEN, message: 'You are not allowed to see this' },
-    UNKNOWN_SERVER_ERROR: { status: Status.INTERNAL_SERVER_ERROR, message: 'Something failed' },
+    BAD_REQUEST: { status: Status.BAD_REQUEST, message: 'Malformed request'},
+    NOT_IMPLEMENTED: { status: Status.NOT_IMPLEMENTED, message: 'Route under construction'},
+    UNKNOWN_SERVER_ERROR: { status: Status.INTERNAL_SERVER_ERROR, message: 'Something failed' }
 }

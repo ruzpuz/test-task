@@ -46,10 +46,11 @@ exports.includeMiddlewares = includeMiddlewares;
 function includeAPIRoutes(app) {
     return __awaiter(this, void 0, void 0, function* () {
         return Promise.all([
-            Promise.resolve().then(() => __importStar(require('security/refresh-token/refresh-token.route')))
-        ]).then((routes) => routes.forEach(({ default: route }) => {
-            route(app);
-        }));
+            Promise.resolve().then(() => __importStar(require('security/refresh-token/refresh-token.route'))),
+            Promise.resolve().then(() => __importStar(require('signup/signup.route'))),
+        ]).then((routes) => routes.forEach(({ default: route }) => route(app))).catch(error => {
+            console.log(error);
+        });
     });
 }
 exports.includeAPIRoutes = includeAPIRoutes;

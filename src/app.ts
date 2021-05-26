@@ -14,4 +14,5 @@ void (async function init() {
     await includeAPIRoutes(app);
 
     app.listen(app.get('port'));
+
 })();

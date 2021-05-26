@@ -17,6 +17,8 @@ exports.sendNoData = sendNoData;
 exports.responses = {
     UNAUTHORIZED: { status: HTTP_1.Status.UNAUTHORIZED, message: 'You are not authorized to access this' },
     FORBIDDEN: { status: HTTP_1.Status.FORBIDDEN, message: 'You are not allowed to see this' },
-    UNKNOWN_SERVER_ERROR: { status: HTTP_1.Status.INTERNAL_SERVER_ERROR, message: 'Something failed' },
+    BAD_REQUEST: { status: HTTP_1.Status.BAD_REQUEST, message: 'Malformed request' },
+    NOT_IMPLEMENTED: { status: HTTP_1.Status.NOT_IMPLEMENTED, message: 'Route under construction' },
+    UNKNOWN_SERVER_ERROR: { status: HTTP_1.Status.INTERNAL_SERVER_ERROR, message: 'Something failed' }
 };
 //# sourceMappingURL=response.service.js.map
