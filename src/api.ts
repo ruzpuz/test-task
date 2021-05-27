@@ -9,8 +9,8 @@ export function includeMiddlewares(app: express.Application): void {
 
     app.use('/api/*', bodyParser.json({ limit: '20kb' }));
 
-    app.use(cookieParser());
-    app.use('*', security());
+    app.use('/api/*', cookieParser());
+    app.use('/api/*', security());
 }
 export async function includeAPIRoutes (app: express.Application): Promise<void> {
     return Promise.all([
