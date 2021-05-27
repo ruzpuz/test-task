@@ -101,7 +101,5 @@ export function prepareResponse(user: User): ResponseData {
     const accessToken = Security.generateAccessToken(user);
     const refreshToken = Security.generateRefreshToken(user);
 
-    Security.get().addRefreshToken(refreshToken);
-
     return  { user, accessToken, refreshToken };
 }

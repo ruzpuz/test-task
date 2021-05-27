@@ -1,7 +1,8 @@
 import express from "express";
 import {responses, send, sendData} from 'common/response.service';
-import {Body} from "./login.dto";
+import {Body, ResponseData} from "./login.dto";
 import {isValid, login, prepareResponse, Status} from "./login.controller";
+import {Security} from "../security/security.controller";
 
 async function loginRoute(request: express.Request<never, never, Body>, response: express.Response) : Promise<express.Response> {
     const { BAD_REQUEST, INTERNAL_SERVER_ERROR, USER_NOT_FOUND, USER_DISABLED, USER_NOT_CONFIRMED } = responses;
@@ -20,8 +21,11 @@ async function loginRoute(request: express.Request<never, never, Body>, response
         return send(response, INTERNAL_SERVER_ERROR);
     }
 
+    const data = prepareResponse(user);
 
-    return sendData(response, prepareResponse(user));
+    Security.get().addRefreshToken(data.refreshToken);
+
+    return sendData(response, data);
 }
 
 export default (app: express.Application) : express.RequestHandler => app.post('/api/login', loginRoute);
