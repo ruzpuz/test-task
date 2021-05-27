@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import {responses} from 'common/response.service';
 import {Status, Response, Route, Method} from 'common/types/HTTP';
+import { User } from 'common/types/User';
 
 export class Security {
     private refreshTokens: Array<string>;
@@ -18,19 +19,15 @@ export class Security {
             return null;
         }
     }
-    public static generateAccessToken(user: any): string {
-        return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15s' })
-    }
-    public static refreshAccessToken(token :string): Response {
-        try {
-            const user: any = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
-            const accessToken = Security.generateAccessToken(user);
 
-            return { status: Status.OK, data: { accessToken } };
-        } catch (error) {
-            //log error and
-            return responses.FORBIDDEN;
-        }
+    public static generateAccessToken(user: User): string {
+        return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15s'})
+    }
+    public static refreshAccessToken(token :string): { accessToken: string } {
+        const user: User = <User>jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+        const accessToken = Security.generateAccessToken(user);
+
+        return { accessToken };
     }
 
     public canRefreshToken(token: string) :boolean {

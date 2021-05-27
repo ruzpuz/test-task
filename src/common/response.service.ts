@@ -1,5 +1,5 @@
 import express from 'express';
-import {Status, Response, Responses} from './types/HTTP';
+import {Response, Responses, Status} from './types/HTTP';
 
 export function send(res:express.Response, response: Response): express.Response {
     return res.status(response.status).json({ message: response.message, ...response.data});
@@ -16,5 +16,7 @@ export const responses: Responses = {
     FORBIDDEN: { status: Status.FORBIDDEN, message: 'You are not allowed to see this' },
     BAD_REQUEST: { status: Status.BAD_REQUEST, message: 'Malformed request'},
     NOT_IMPLEMENTED: { status: Status.NOT_IMPLEMENTED, message: 'Route under construction'},
-    UNKNOWN_SERVER_ERROR: { status: Status.INTERNAL_SERVER_ERROR, message: 'Something failed' }
+    INTERNAL_SERVER_ERROR: { status: Status.INTERNAL_SERVER_ERROR, message: 'Something failed' },
+    USER_SUCCESSFULLY_REGISTERED: { status: Status.CREATED, message: 'Successful registration' },
+    USER_ALREADY_REGISTERED: { status: Status.CONFLICT, message: 'User already registered' },
 }

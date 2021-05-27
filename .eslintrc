@@ -17,5 +17,11 @@
       "@typescript-eslint/explicit-module-boundary-types": "off"
     }
 
+  }, {
+    "files": [ "src/**/*.route.ts"],
+    "rules": {
+      "@typescript-eslint/no-misused-promises": "off"
+    }
+
   }]
 }
