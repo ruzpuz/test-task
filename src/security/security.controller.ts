@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import {responses} from 'common/response.service';
-import {Status, Response, Route, Method} from 'common/types/HTTP';
+import { Response, Route, Method} from 'common/types/HTTP';
 import { User } from 'common/types/User';
 
 export class Security {
@@ -8,12 +8,12 @@ export class Security {
     private routes: Array<Route>;
     private static instance: Security;
 
-    public static getUser(token: string): unknown {
+    public static getUser(token: string): User {
         if(!token) {
             return null;
         }
         try {
-            return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+            return <User> jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
         } catch (error) {
             //log error and
             return null;
@@ -23,6 +23,9 @@ export class Security {
     public static generateAccessToken(user: User): string {
         return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15s'})
     }
+    public static generateRefreshToken(user: User): string {
+        return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
+    }
     public static refreshAccessToken(token :string): { accessToken: string } {
         const user: User = <User>jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
         const accessToken = Security.generateAccessToken(user);
@@ -30,6 +33,12 @@ export class Security {
         return { accessToken };
     }
 
+    public addRefreshToken(token: string): void {
+        this.refreshTokens.push(token);
+    }
+    public removeRefreshToken(token: string): void {
+        this.refreshTokens = this.refreshTokens.filter(item => item !== token);
+    }
     public canRefreshToken(token: string) :boolean {
         return this.refreshTokens.includes(token);
     }

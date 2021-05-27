@@ -16,6 +16,7 @@ export async function includeAPIRoutes (app: express.Application): Promise<void>
     return Promise.all([
         import('security/refresh-token/refresh-token.route'),
         import('signup/signup.route'),
+        import('login/login.route'),
     ]).then(
         (routes) => routes.forEach(({ default: route }) => route(app))
     ).catch(error => {

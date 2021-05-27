@@ -5,10 +5,10 @@ import { isValidEmail } from "common/validation/email";
 import { isNonEmptyString } from "common/validation/string";
 import { Database, DatabaseErrors } from "../common/database/Database";
 
-export enum Result {
+export enum Status {
     OK,
-    Duplicate,
-    UnknownError
+    DUPLICATE,
+    UNKNOWN_ERROR
 }
 
 function prepareData({ email, firstName, lastName, password}:Body) :Body{
@@ -27,7 +27,7 @@ export function isValid({ email, firstName, lastName, password }: Body): boolean
         isNonEmptyString(password)
     );
 }
-export async function registerUser(body: Body): Promise<Result> {
+export async function registerUser(body: Body): Promise<Status> {
     const database = Database.get();
     const createNewUserSQL = `
       WITH inserted_user AS (
@@ -59,9 +59,9 @@ export async function registerUser(body: Body): Promise<Result> {
         ]);
     } catch (error) {
         if (error instanceof DatabaseError && error.code === DatabaseErrors.DUPLICATE_KEY) {
-            return Result.Duplicate;
+            return Status.DUPLICATE;
         }
-        return Result.UnknownError;
+        return Status.UNKNOWN_ERROR;
     }
-    return Result.OK;
+    return Status.OK;
 }

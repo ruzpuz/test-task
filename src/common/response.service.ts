@@ -19,4 +19,8 @@ export const responses: Responses = {
     INTERNAL_SERVER_ERROR: { status: Status.INTERNAL_SERVER_ERROR, message: 'Something failed' },
     USER_SUCCESSFULLY_REGISTERED: { status: Status.CREATED, message: 'Successful registration' },
     USER_ALREADY_REGISTERED: { status: Status.CONFLICT, message: 'User already registered' },
+    USER_NOT_FOUND: { status: Status.NOT_FOUND, message: 'User not found' },
+    USER_DISABLED: { status: Status.FORBIDDEN, message: 'User is disabled' },
+    USER_NOT_CONFIRMED: { status: Status.FORBIDDEN, message: 'User is not confirmed' },
+
 }
