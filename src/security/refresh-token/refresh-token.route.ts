@@ -5,7 +5,7 @@ import { Body } from './refresh-token.dto';
 
 function refreshTokenRoute(request: express.Request<never, never, Body>, response: express.Response) : express.Response{
     const { UNAUTHORIZED, FORBIDDEN } = responses;
-    const { token } = request.body;
+    const { token} = request.body;
     const security = Security.get();
 
     if(!token) {

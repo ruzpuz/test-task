@@ -21,7 +21,7 @@ async function loginRoute(request: express.Request<never, never, Body>, response
         return send(response, INTERNAL_SERVER_ERROR);
     }
 
-    const data = prepareResponse(user);
+    const data :ResponseData = prepareResponse(user);
 
     Security.get().addRefreshToken(data.refreshToken);
 

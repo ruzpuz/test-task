@@ -8,6 +8,12 @@ export class Security {
     private routes: Array<Route>;
     private static instance: Security;
 
+    private static setExpiration(user: User, seconds: number) : User {
+        user.iat = Math.floor(Date.now() / 1000) + seconds;
+        user.exp = Math.floor(Date.now() / 1000) + seconds;
+
+        return user
+    }
     public static getUser(token: string): User {
         if(!token) {
             return null;
@@ -15,20 +21,24 @@ export class Security {
         try {
             return <User> jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
         } catch (error) {
+            console.log(error)
             //log error and
             return null;
         }
     }
 
-    public static generateAccessToken(user: User): string {
-        return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15s'})
+    public static generateAccessToken(user: User, expiresIn?: number): string {
+        delete user.exp;
+        delete user.iat;
+
+        return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn })
     }
     public static generateRefreshToken(user: User): string {
         return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
     }
     public static refreshAccessToken(token :string): { accessToken: string } {
         const user: User = <User>jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
-        const accessToken = Security.generateAccessToken(user);
+        const accessToken = Security.generateAccessToken(user, 15);
 
         return { accessToken };
     }
