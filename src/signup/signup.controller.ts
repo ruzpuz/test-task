@@ -48,14 +48,18 @@ export async function registerUser(body: Body): Promise<Status> {
 
     const { email, firstName, lastName, password } = prepareData(body);
 
+    /*
+     *  TODO - In any real world scenario newly registered user will not be automatically
+     */
+
     try {
-       await database.raw(createNewUserSQL, [
-           email,
-           firstName,
-           lastName,
-           password,
-           '',
-           true
+        await database.raw(createNewUserSQL, [
+            email,
+            firstName,
+            lastName,
+            password,
+            '',
+            true
         ]);
     } catch (error) {
         if (error instanceof DatabaseError && error.code === DatabaseErrors.DUPLICATE_KEY) {

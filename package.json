@@ -6,7 +6,7 @@
   "main": "dist/app.js",
   "scripts": {
     "tsc": "tsc",
-    "start": "tsc && NODE_PATH=./dist node dist/app.js",
+    "start": "tsc && NODE_PATH=./dist node dist/index.js",
     "knex": "knex --esm",
     "setup-dependancies": "docker-compose up -d",
     "dev": "nodemon",

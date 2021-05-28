@@ -1,25 +1,10 @@
-import express from 'express'
-import bodyParser from 'body-parser';
-import cookieParser  from 'cookie-parser' ;
-import security from 'security/security.middleware';
+import express from 'express';
 
-export function includeMiddlewares(app: express.Application): void {
-    //logger.info('Including middlewares');
-    app.use('/api/*', bodyParser.urlencoded({ extended: true, limit: '20kb' }));
+type RouteModule = { readonly default: (app: express.Application) => express.RequestHandler };
+export type RouteResolver = Promise<RouteModule>;
 
-    app.use('/api/*', bodyParser.json({ limit: '20kb' }));
-
-    app.use('/api/*', cookieParser());
-    app.use('/api/*', security());
-}
-export async function includeAPIRoutes (app: express.Application): Promise<void> {
-    return Promise.all([
-        import('security/refresh-token/refresh-token.route'),
-        import('signup/signup.route'),
-        import('login/login.route'),
-    ]).then(
-        (routes) => routes.forEach(({ default: route }) => route(app))
-    ).catch(error => {
-        console.log(error);
-    });
-}
+export const routes: Array<string> = [
+    'security/refresh-token/refresh-token.route',
+    'signup/signup.route',
+    'login/login.route'
+];
