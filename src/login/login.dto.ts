@@ -4,7 +4,7 @@ export interface Body {
     email: string,
     password: string
 }
-export type ResponseData = {
+export type LoginResponseData = {
     user: User
     message?: ''
     accessToken: string,

@@ -1,5 +1,5 @@
 import keccak from 'keccak';
-import { Body, ResponseData } from "./login.dto";
+import { Body, LoginResponseData } from "./login.dto";
 import { isValidEmail } from "common/validation/email";
 import { isNonEmptyString } from "common/validation/string";
 import { Database } from "common/database/Database";
@@ -97,7 +97,7 @@ export async function login(body: Body): Promise<Result> {
 
     return response;
 }
-export function prepareResponse(user: User): ResponseData {
+export function prepareResponse(user: User): LoginResponseData {
     const accessToken = Security.generateAccessToken(user, 15);
     const refreshToken = Security.generateRefreshToken(user);
 

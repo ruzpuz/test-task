@@ -1,6 +1,6 @@
 import express from "express";
 import {responses, send, sendData} from 'common/response.service';
-import {Body, ResponseData} from "./login.dto";
+import {Body, LoginResponseData} from "./login.dto";
 import {isValid, login, prepareResponse, Status} from "./login.controller";
 import {Security} from "../security/security.controller";
 
@@ -21,7 +21,7 @@ async function loginRoute(request: express.Request<never, never, Body>, response
         return send(response, INTERNAL_SERVER_ERROR);
     }
 
-    const data :ResponseData = prepareResponse(user);
+    const data :LoginResponseData = prepareResponse(user);
 
     Security.get().addRefreshToken(data.refreshToken);
 

@@ -7,5 +7,6 @@ export const routes: Array<string> = [
     'health/health.route',
     'security/refresh-token/refresh-token.route',
     'signup/signup.route',
-    'login/login.route'
+    'login/login.route',
+    'me/me.route'
 ];

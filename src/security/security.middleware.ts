@@ -4,18 +4,19 @@ import { send } from "common/response.service";
 import { responses } from "common/response.service";
 
 export default function create():express.RequestHandler {
-    return function (req:express.Request, res: express.Response, next:express.NextFunction): express.Response {
+    return function (request:express.Request, response: express.Response, next:express.NextFunction): express.Response {
         const { UNAUTHORIZED } = responses;
         const security = Security.get();
 
-        const authHeader = req.headers['authorization'];
+        const authHeader = request.headers['authorization'];
         const token = authHeader && authHeader.split(' ')[1];
         const user = Security.getUser(token);
 
-        const halt = security.shouldEndRequest(user, req.baseUrl, req.method);
+        const halt = security.shouldEndRequest(user, request.baseUrl, request.method);
         if(halt) {
-            return send(res, UNAUTHORIZED);
+            return send(response, UNAUTHORIZED);
         }
+        response.locals.user = user;
         next();
         return null;
     }

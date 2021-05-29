@@ -24,9 +24,11 @@ export class Security {
             return null;
         }
         try {
-            return <User> jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+            const user = <User> jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+            delete user.exp;
+            delete user.iat;
+            return user;
         } catch (error) {
-            console.log(error)
             //log error and
             return null;
         }

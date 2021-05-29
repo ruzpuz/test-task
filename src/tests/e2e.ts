@@ -6,6 +6,7 @@ import { App } from "../app";
 import {Status} from "../common/types/HTTP";
 import data from './data';
 import { Database } from "../common/database/Database";
+import {LoginResponseData} from "../login/login.dto";
 
 dotenv.config();
 
@@ -54,6 +55,7 @@ async function preventDuplicateUserRegistration() :Promise<void> {
         assert.strictEqual(response.status, Status.CONFLICT);
     }
 }
+
 async function badCredentialsLogin() :Promise<void> {
     const { email, password } = TEST_USER_1;
     try {
@@ -80,7 +82,6 @@ async function disabledLogin() :Promise<void> {
         assert.strictEqual(response.status, Status.FORBIDDEN);
     }
 }
-
 async function unconfirmedLogin() :Promise<void> {
     const { email, password } = TEST_USER_5;
     try {
@@ -91,6 +92,33 @@ async function unconfirmedLogin() :Promise<void> {
 
         assert.strictEqual(response.status, Status.FORBIDDEN);
     }
+}
+
+async function securityMiddleware() :Promise<void> {
+    try {
+        const { status } = await http.get(BaseURL + '/me');
+        assert.notStrictEqual(status, Status.OK);
+    } catch(error) {
+        const { response } = error as AxiosError;
+
+        assert.strictEqual(response.status, Status.UNAUTHORIZED);
+    }
+    try {
+        const { status } = await http.get(BaseURL + '/me', {    headers: { Authorization: `Bearer 123` } });
+        assert.notStrictEqual(status, Status.OK);
+    } catch(error) {
+        const { response } = error as AxiosError;
+
+        assert.strictEqual(response.status, Status.UNAUTHORIZED);
+    }
+}
+
+async function logedUserFetchSecured() :Promise<void> {
+    const { status: loginStatus, data } : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', TEST_USER_1);
+    assert.strictEqual(loginStatus, Status.OK);
+
+    const { status } = await http.get(BaseURL + '/me', {    headers: { Authorization: `Bearer ${data.accessToken}` } });
+    assert.strictEqual(status, Status.OK);
 }
 
 describe('Thorough application testing',function() :void {
@@ -106,4 +134,6 @@ describe('Thorough application testing',function() :void {
     it('Registered user can login', successfulLogin);
     it('Disabled user cannot login', disabledLogin);
     it('Unconfirmed user cannot login', unconfirmedLogin);
+    it('Security middleware should prevent unsecured access to secured route', securityMiddleware);
+    it('Logged in user can access to secured route', logedUserFetchSecured);
 });
