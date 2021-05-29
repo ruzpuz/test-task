@@ -1,13 +1,15 @@
-import { App } from "../app";
 import dotenv from "dotenv";
 import assert from 'assert';
-import http, {AxiosResponse} from 'axios';
-import {Status} from "../common/types/HTTP";
 import { execSync } from 'child_process';
+import http, {AxiosResponse} from 'axios';
+import { App } from "../app";
+import {Status} from "../common/types/HTTP";
 import data from './data';
+import { Database } from "../common/database/Database";
 
 dotenv.config();
 
+const database = Database.get();
 type AxiosError = { response: AxiosResponse<never>};
 
 const BaseURL = `http://localhost:${process.env.EXPRESS_PORT}/api`;
@@ -23,6 +25,10 @@ function startApplication(): void {
 function databaseSeed(): void {
     assert.doesNotThrow(() => execSync('npm run knex seed:run --esm'))
 }
+async function databaseMigrations(): Promise<void> {
+    await assert.doesNotReject(async () => database.migrate.latest());
+}
+
 async function applicationWorkingNormally() :Promise<void> {
     const { status } = await http.get(BaseURL + '/health');
 
@@ -92,7 +98,8 @@ describe('Thorough application testing',function() :void {
 
     it('Application should start normally', startApplication);
     it('Application and its services should run normally', applicationWorkingNormally);
-    it('Database should seed initial data', databaseSeed);
+    it('Database should succesfully migrate to latest migration', databaseMigrations);
+    it('Seed data should be successfully seeded', databaseSeed);
     it('Successfully register users endpoint', registerUsers);
     it('Duplicate users should not be able to register', preventDuplicateUserRegistration);
     it('Cannot login with bad credentials', badCredentialsLogin);
