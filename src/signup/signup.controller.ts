@@ -49,7 +49,10 @@ export async function registerUser(body: Body): Promise<Status> {
     const { email, firstName, lastName, password } = prepareData(body);
 
     /*
-     *  TODO - In any real world scenario newly registered user will not be automatically
+     *   TODO - In any real world scenario newly registered user will not be automatically confirmed
+     *          This system will have unique confirmation token saved to the database and sent to the user
+     *          to be used for user confirmation.
+     *
      */
 
     try {
@@ -58,7 +61,7 @@ export async function registerUser(body: Body): Promise<Status> {
             firstName,
             lastName,
             password,
-            '',
+            keccak('keccak512').update(`User registered at ${(new Date()).toISOString()}. Random ${Math.random()}`).digest('hex'),
             true
         ]);
     } catch (error) {

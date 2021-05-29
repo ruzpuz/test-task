@@ -18,7 +18,7 @@
     }
 
   }, {
-    "files": [ "src/**/*.route.ts"],
+    "files": [ "src/**/*.route.ts", "src/tests/e2e.ts"],
     "rules": {
       "@typescript-eslint/no-misused-promises": "off"
     }

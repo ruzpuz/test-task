@@ -12,7 +12,8 @@
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint-test": "find ./src -name '*.ts' | xargs eslint",
-    "unit-test": "NODE_PATH=./src ts-mocha -p tsconfig.json src/tests/unit.ts"
+    "unit-test": "NODE_PATH=./src ts-mocha -p tsconfig.json src/tests/unit.ts",
+    "e2e-test": "NODE_PATH=./src ts-mocha -p tsconfig.json --exit src/tests/e2e.ts"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
     "assert": "^2.0.0",
+    "axios": "^0.21.1",
     "eslint": "^7.26.0",
     "nodemon": "^2.0.7",
     "ts-mocha": "^8.0.0",

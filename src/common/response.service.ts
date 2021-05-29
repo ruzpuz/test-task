@@ -16,11 +16,12 @@ export const responses: Responses = {
     FORBIDDEN: { status: Status.FORBIDDEN, message: 'You are not allowed to see this' },
     BAD_REQUEST: { status: Status.BAD_REQUEST, message: 'Malformed request'},
     NOT_IMPLEMENTED: { status: Status.NOT_IMPLEMENTED, message: 'Route under construction'},
+    HEALTH_OK: { status: Status.OK, message: 'Application running normally'},
+    HEALTH_NOT_OK: { status: Status.INTERNAL_SERVER_ERROR, message: 'Application is not running normally'},
     INTERNAL_SERVER_ERROR: { status: Status.INTERNAL_SERVER_ERROR, message: 'Something failed' },
     USER_SUCCESSFULLY_REGISTERED: { status: Status.CREATED, message: 'Successful registration' },
     USER_ALREADY_REGISTERED: { status: Status.CONFLICT, message: 'User already registered' },
     USER_NOT_FOUND: { status: Status.NOT_FOUND, message: 'User not found' },
     USER_DISABLED: { status: Status.FORBIDDEN, message: 'User is disabled' },
     USER_NOT_CONFIRMED: { status: Status.FORBIDDEN, message: 'User is not confirmed' },
-
 }
