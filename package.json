@@ -12,8 +12,8 @@
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint-test": "find ./src -name '*.ts' | xargs eslint",
-    "unit-test": "NODE_PATH=./src ts-mocha -p tsconfig.json src/tests/unit.ts",
-    "e2e-test": "NODE_PATH=./src ts-mocha -p tsconfig.json --exit src/tests/e2e.ts"
+    "unit-test": "NODE_ENV=testing NODE_PATH=./src ts-mocha -p tsconfig.json src/tests/unit.ts",
+    "e2e-test": "NODE_ENV=testing NODE_PATH=./src ts-mocha -p tsconfig.json --exit src/tests/e2e.ts"
   },
   "author": "",
   "license": "ISC",

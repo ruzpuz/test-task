@@ -7,6 +7,7 @@ import {Status} from "../common/types/HTTP";
 import data from './data';
 import { Database } from "../common/database/Database";
 import {LoginResponseData} from "../login/login.dto";
+import {RefreshTokenResponseData} from 'security/refresh-token/refresh-token.dto';
 
 dotenv.config();
 
@@ -16,7 +17,9 @@ type AxiosError = { response: AxiosResponse<never>};
 const BaseURL = `http://localhost:${process.env.EXPRESS_PORT}/api`;
 
 const { TEST_USER_1, TEST_USER_2, TEST_USER_3, TEST_USER_4, TEST_USER_5 } = data;
-
+function delay(time: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
 function startApplication(): void {
     assert.doesNotThrow(async () => {
         const app = new App();
@@ -113,12 +116,40 @@ async function securityMiddleware() :Promise<void> {
     }
 }
 
-async function logedUserFetchSecured() :Promise<void> {
+async function loggedUserFetchSecured() :Promise<void> {
     const { status: loginStatus, data } : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', TEST_USER_1);
     assert.strictEqual(loginStatus, Status.OK);
 
     const { status } = await http.get(BaseURL + '/me', {    headers: { Authorization: `Bearer ${data.accessToken}` } });
     assert.strictEqual(status, Status.OK);
+}
+
+async function testingTokenRefreshing() :Promise<void> {
+    const { status: loginStatus, data } : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', TEST_USER_1);
+    assert.strictEqual(loginStatus, Status.OK);
+
+    const { status } = await http.get(BaseURL + '/me', {    headers: { Authorization: `Bearer ${data.accessToken}` } });
+    assert.strictEqual(status, Status.OK);
+
+    await delay(1100);
+
+    try {
+        const { status } = await http.get(BaseURL + '/me', {    headers: { Authorization: `Bearer ${data.accessToken}` } });
+        assert.notStrictEqual(status, Status.OK);
+    } catch(error) {
+        const { response } = error as AxiosError;
+
+        if(!response) {
+            throw error;
+        }
+        assert.strictEqual(response.status, Status.UNAUTHORIZED);
+    }
+    const { status: refreshingStatus, data: refreshingData } : {status: Status, data: RefreshTokenResponseData } = await http.post(BaseURL + '/token', { token: data.refreshToken });
+    assert.strictEqual(refreshingStatus, Status.OK);
+
+    const { status: meFetchingStatus } = await http.get(BaseURL + '/me', {    headers: { Authorization: `Bearer ${refreshingData.accessToken}` } });
+    assert.strictEqual(meFetchingStatus, Status.OK);
+
 }
 
 describe('Thorough application testing',function() :void {
@@ -135,5 +166,6 @@ describe('Thorough application testing',function() :void {
     it('Disabled user cannot login', disabledLogin);
     it('Unconfirmed user cannot login', unconfirmedLogin);
     it('Security middleware should prevent unsecured access to secured route', securityMiddleware);
-    it('Logged in user can access to secured route', logedUserFetchSecured);
+    it('Logged in user can access to secured route', loggedUserFetchSecured);
+    it('User should be able to refresh token after it is expired', testingTokenRefreshing);
 });

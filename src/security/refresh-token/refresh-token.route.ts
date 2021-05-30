@@ -15,7 +15,7 @@ function refreshTokenRoute(request: express.Request<never, never, Body>, respons
         return send(response, FORBIDDEN);
     }
     try {
-        return sendData(response, Security.refreshAccessToken(token));
+        return sendData(response, security.refreshAccessToken(token));
     } catch(e) {
         return send(response, FORBIDDEN);
     }

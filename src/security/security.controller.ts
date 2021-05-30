@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { Route, Method} from 'common/types/HTTP';
 import { User } from 'common/types/User';
+import {Environment} from "../common/types/Environment";
 
 export class Security {
     /*
@@ -9,22 +10,20 @@ export class Security {
     *    destroy the array of tokens. Switch to Redis will be a reasonable thing to do. Since this task is
     *    already taking too long this will be outside of the scope of this task.
     * */
+    private tokenSecret: string;
+    private refreshSecret: string;
+    private tokenExpiresIn: number;
     private refreshTokens: Array<string>;
     private routes: Array<Route>;
+
     private static instance: Security;
 
-    private static setExpiration(user: User, seconds: number) : User {
-        user.iat = Math.floor(Date.now() / 1000) + seconds;
-        user.exp = Math.floor(Date.now() / 1000) + seconds;
-
-        return user
-    }
-    public static getUser(token: string): User {
+    public getUser(token: string): User {
         if(!token) {
             return null;
         }
         try {
-            const user = <User> jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+            const user = <User> jwt.verify(token, this.tokenSecret);
             delete user.exp;
             delete user.iat;
             return user;
@@ -34,18 +33,18 @@ export class Security {
         }
     }
 
-    public static generateAccessToken(user: User, expiresIn?: number): string {
+    public generateAccessToken(user: User, expires?: boolean): string {
         delete user.exp;
         delete user.iat;
 
-        return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn })
+        return jwt.sign(user, this.tokenSecret, expires ? { expiresIn: this.tokenExpiresIn } : undefined);
     }
-    public static generateRefreshToken(user: User): string {
-        return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
+    public generateRefreshToken(user: User): string {
+        return jwt.sign(user, this.refreshSecret)
     }
-    public static refreshAccessToken(token :string): { accessToken: string } {
-        const user: User = <User>jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
-        const accessToken = Security.generateAccessToken(user, <number> <unknown> process.env.ACCESS_TOKEN_EXPIRES_IN);
+    public refreshAccessToken(token :string): { accessToken: string } {
+        const user: User = <User>jwt.verify(token, this.refreshSecret);
+        const accessToken = this.generateAccessToken(user, true);
 
         return { accessToken };
     }
@@ -74,6 +73,13 @@ export class Security {
     private constructor() {
         this.refreshTokens = [];
         this.routes = [];
+        this.tokenExpiresIn = Number(process.env.ACCESS_TOKEN_EXPIRES_IN);
+        if(process.env.NODE_ENV === Environment.TESTING) {
+            this.tokenExpiresIn = Number(process.env.TEST_ACCESS_TOKEN_EXPIRES_IN);
+        }
+
+        this.tokenSecret = process.env.ACCESS_TOKEN_SECRET;
+        this.refreshSecret = process.env.REFRESH_TOKEN_SECRET;
     }
     public static get(): Security {
         if(!this.instance) {

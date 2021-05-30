@@ -10,7 +10,7 @@ export default function create():express.RequestHandler {
 
         const authHeader = request.headers['authorization'];
         const token = authHeader && authHeader.split(' ')[1];
-        const user = Security.getUser(token);
+        const user = security.getUser(token);
 
         const halt = security.shouldEndRequest(user, request.baseUrl, request.method);
         if(halt) {

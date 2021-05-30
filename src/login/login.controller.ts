@@ -98,8 +98,10 @@ export async function login(body: Body): Promise<Result> {
     return response;
 }
 export function prepareResponse(user: User): LoginResponseData {
-    const accessToken = Security.generateAccessToken(user, 15);
-    const refreshToken = Security.generateRefreshToken(user);
+    const security = Security.get();
+
+    const accessToken = security.generateAccessToken(user, true);
+    const refreshToken = security.generateRefreshToken(user);
 
     delete user.exp;
     delete user.iat;
