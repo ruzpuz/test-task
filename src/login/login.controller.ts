@@ -82,6 +82,7 @@ export async function login(body: Body): Promise<Result> {
             }
             response.status = Status.OK;
             response.user = {
+                id: users[0].id,
                 firstName: users[0].first_name,
                 lastName: users[0].last_name,
                 email: users[0].email,

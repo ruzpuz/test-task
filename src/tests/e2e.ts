@@ -115,7 +115,6 @@ async function securityMiddleware() :Promise<void> {
         assert.strictEqual(response.status, Status.UNAUTHORIZED);
     }
 }
-
 async function loggedUserFetchSecured() :Promise<void> {
     const { status: loginStatus, data } : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', TEST_USER_1);
     assert.strictEqual(loginStatus, Status.OK);
@@ -123,7 +122,6 @@ async function loggedUserFetchSecured() :Promise<void> {
     const { status } = await http.get(BaseURL + '/me', {    headers: { Authorization: `Bearer ${data.accessToken}` } });
     assert.strictEqual(status, Status.OK);
 }
-
 async function testingTokenRefreshing() :Promise<void> {
     const { status: loginStatus, data } : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', TEST_USER_1);
     assert.strictEqual(loginStatus, Status.OK);
@@ -152,6 +150,23 @@ async function testingTokenRefreshing() :Promise<void> {
 
 }
 
+async function updatePassword() :Promise<void> {
+    const newPassword = 'password1';
+    const { status: loginStatus, data } : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', TEST_USER_1);
+    assert.strictEqual(loginStatus, Status.OK);
+
+    const token = data.accessToken;
+
+    const { status: passwordUpdateStatus  } : { status:Status, data: LoginResponseData} =
+        await http.post(BaseURL + '/me/update-password',
+            { password: newPassword },
+            {    headers: { Authorization: `Bearer ${token}` } });
+    assert.strictEqual(passwordUpdateStatus, Status.OK);
+
+    const { status: newloginStatus } : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', { email: TEST_USER_1.email, password: newPassword });
+    assert.strictEqual(newloginStatus, Status.OK);
+}
+
 describe('Thorough application testing',function() :void {
     this.timeout(0);
 
@@ -168,4 +183,5 @@ describe('Thorough application testing',function() :void {
     it('Security middleware should prevent unsecured access to secured route', securityMiddleware);
     it('Logged in user can access to secured route', loggedUserFetchSecured);
     it('User should be able to refresh token after it is expired', testingTokenRefreshing);
+    it('User should be able to update their password, and login with new password', updatePassword);
 });

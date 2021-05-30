@@ -24,4 +24,5 @@ export const responses: Responses = {
     USER_NOT_FOUND: { status: Status.NOT_FOUND, message: 'User not found' },
     USER_DISABLED: { status: Status.FORBIDDEN, message: 'User is disabled' },
     USER_NOT_CONFIRMED: { status: Status.FORBIDDEN, message: 'User is not confirmed' },
+    USER_PASSWORD_UPDATED: { status: Status.OK, message: 'Successfully updated password' },
 }
