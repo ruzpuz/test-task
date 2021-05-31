@@ -25,4 +25,7 @@ export const responses: Responses = {
     USER_DISABLED: { status: Status.FORBIDDEN, message: 'User is disabled' },
     USER_NOT_CONFIRMED: { status: Status.FORBIDDEN, message: 'User is not confirmed' },
     USER_PASSWORD_UPDATED: { status: Status.OK, message: 'Successfully updated password' },
+    USER_ID_NOT_VALID: { status: Status.BAD_REQUEST, message: 'Invalid user id' },
+    USER_SUCCESSFULLY_LIKED: { status: Status.OK, message: 'User successfully liked' },
+    USER_ALREADY_LIKED: { status: Status.CONFLICT, message: 'User already liked' },
 }

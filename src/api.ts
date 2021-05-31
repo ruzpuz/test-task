@@ -9,5 +9,6 @@ export const routes: Array<string> = [
     'signup/signup.route',
     'login/login.route',
     'me/me.route',
-    'update-password/update-password.route'
+    'update-password/update-password.route',
+    'like/like.route'
 ];

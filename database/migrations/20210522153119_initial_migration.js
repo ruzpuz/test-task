@@ -6,7 +6,6 @@ exports.up = function(knex) {
       "public"."role" (
         "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
         "name" varchar(64) COLLATE "pg_catalog"."default" NOT NULL,
-        
         PRIMARY KEY ("id")
       );
             

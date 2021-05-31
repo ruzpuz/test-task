@@ -13,17 +13,22 @@ function validStrings() :void {
   strings.valid.forEach(item => assert(isString(item)));
 }
 function invalidStrings() :void {
-  strings.invalid.forEach(item => assert(!isString(item)));
+  strings.invalid.forEach(item =>  {
+    assert(!isString(item))
+  });
 }
 function validEmpty() :void {
   assert(isString(strings.validEmpty));
-  assert(!isNonEmptyString(strings.validEmpty));
 }
-
+function nonEmptyMaxLength(): void {
+  assert(!isNonEmptyString('', 128))
+  assert(!isNonEmptyString('aaaaaa', 2))
+}
 export default () :mocha.Suite  => describe('Testing services for validation of strings', () :void => {
 
   it('Valid strings', validStrings);
   it('Invalid strings', invalidStrings);
   it('Empty string', validEmpty);
+  it('Max length', nonEmptyMaxLength);
 
 });

@@ -4,6 +4,7 @@ import mocha from 'mocha';
 
 const emails = {
   valid: [
+    's@sas.com',
     'email@example.com',
     'firstname.lastname@example.com',
     'email@subdomain.example.com',
@@ -23,6 +24,7 @@ const emails = {
     'very.“(),:;<>[]”.VERY.“very@\\ "very”.unusual@strange.example.com'
   ],
   invalid: [
+    'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@ssssss.com',
     'plainaddress',
     '#@%^%#$@#$@#.com',
     '@example.com',

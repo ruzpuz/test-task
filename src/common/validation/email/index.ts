@@ -7,8 +7,10 @@ export function isValidEmail(email: any) :boolean {
   if(!isNonEmptyString(email)) {
     return false;
   }
-  return patternValidation(email, emailRegex) &&
+  return (
+      patternValidation(email, emailRegex) &&
       !patternValidation(email, '^[\\s\\.]+.*$') &&
-      !patternValidation(email, '^.*\\.\\..*$');
+      !patternValidation(email, '^.*\\.\\..*$')
+  );
 }
 

@@ -19,11 +19,11 @@ function prepareData({ email, firstName, lastName, password}:Body) :Body{
         password: keccak('keccak512').update(password).digest('hex')
     }
 }
-export function isValid({ email, firstName, lastName, password }: Body): boolean {
+export function isValid({ email, firstName, lastName, password }: Body ): boolean {
     return (
         isValidEmail(email) &&
-        isNonEmptyString(lastName) &&
-        isNonEmptyString(firstName) &&
+        isNonEmptyString(firstName, 128) &&
+        isNonEmptyString(lastName, 128) &&
         isNonEmptyString(password)
     );
 }
