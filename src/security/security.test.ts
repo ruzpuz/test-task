@@ -1,16 +1,16 @@
 import mocha from 'mocha';
-import {Security} from './security.controller';
-import {Method} from '../common/types/HTTP';
+import { Security } from './security.controller';
+import { Method } from '../common/types/HTTP';
 import assert from 'assert';
 const security = Security.get();
 
 function registerTwoRoutes() :void {
-    assert.throws(() :void => {
-        security.registerSecuredRoute('/api/user/:id', Method.GET);
-        security.registerSecuredRoute('/api/user/:id', Method.GET);
-    })
+  assert.throws(() :void => {
+    security.registerSecuredRoute('/api/user/:id', Method.GET);
+    security.registerSecuredRoute('/api/user/:id', Method.GET);
+  });
 }
 
 export default () : mocha.Suite => describe('Testing security services', () :void => {
-    it('Cannot register same route twice', registerTwoRoutes);
+  it('Cannot register same route twice', registerTwoRoutes);
 });

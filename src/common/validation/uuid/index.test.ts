@@ -1,6 +1,6 @@
 import * as service from './index';
 import assert from 'assert';
-import mocha from "mocha";
+import mocha from 'mocha';
 
 function generatedUUID() :void {
   const tries = Math.floor(Math.random() * 10) + 1;
@@ -9,6 +9,6 @@ function generatedUUID() :void {
   }
 }
 
-export default () :mocha.Suite  => describe('Testing services for validation of UUID', () :void => {
+export default () :mocha.Suite => describe('Testing services for validation of UUID', () :void => {
   it('Generated UUID should be valid', generatedUUID);
 });

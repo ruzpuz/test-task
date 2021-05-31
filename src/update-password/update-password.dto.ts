@@ -1,3 +1,1 @@
-export interface Body {
-    password: string
-}
+export interface Body { password: string }

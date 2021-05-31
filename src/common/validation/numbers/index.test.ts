@@ -1,6 +1,6 @@
 import { isFloat, isInteger, isPositiveInteger, isPositiveOrZeroInteger } from './index';
 import assert from 'assert';
-import mocha from "mocha";
+import mocha from 'mocha';
 
 const integers = {
   valid: [ 0, 1, -1, 999999, '-1', '1' ],
@@ -42,7 +42,7 @@ function invalidFloats() :void {
   floats.invalid.forEach(item => assert(!isFloat(item)));
 }
 
-export default () :mocha.Suite  => describe('Testing services for validation of numbers', () :void => {
+export default () :mocha.Suite => describe('Testing services for validation of numbers', () :void => {
   it('Valid integers', validIntegers);
   it('Valid positive or zero integers', validPositiveOrZeroIntegers);
   it('Invalid integers', invalidIntegers);

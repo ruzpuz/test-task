@@ -1,10 +1,10 @@
-import {Database} from "../common/database/Database";
-import {User} from "../common/types/User";
+import { Database } from '../common/database/Database';
+import { User } from '../common/types/User';
 
 interface DatabaseResult { id:string, first_name: string, last_name: string, email:string, likes:number }
 export async function fetchUsers(): Promise<Array<{ likes: number, user:User}>> {
-    const database = Database.get();
-    const sql = `
+  const database = Database.get();
+  const sql = `
         WITH likes AS (
           SELECT
             whom AS id,
@@ -24,21 +24,21 @@ export async function fetchUsers(): Promise<Array<{ likes: number, user:User}>> 
           likes ON likes.id = "user".id
         ORDER BY likes DESC;
     `;
-    try {
-        const { rows } : { rows: Array<DatabaseResult> } = await database.raw(sql);
-        return rows.map(row => {
-            return {
-                user: {
-                    id: row.id,
-                    firstName: row.first_name,
-                    lastName: row.last_name,
-                    email: row.email
-                },
-                likes:row.likes
-            };
+  try {
+    const { rows } : { rows: Array<DatabaseResult> } = await database.raw(sql);
+    return rows.map(row => {
+      return {
+        user: {
+          id: row.id,
+          firstName: row.first_name,
+          lastName: row.last_name,
+          email: row.email
+        },
+        likes: row.likes
+      };
 
-        });
-    } catch {
-        return null;
-    }
+    });
+  } catch {
+    return null;
+  }
 }
