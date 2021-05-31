@@ -2,11 +2,11 @@ import express from "express";
 import {Security} from "../security/security.controller";
 import {Method} from "../common/types/HTTP";
 import {responses, send} from "../common/response.service";
-import {LikeBody, LikeRouteParams} from "./like.dto";
+import { LikeRouteParams } from "./like.dto";
 import {isValid, like, Status} from "./like.controller";
 import {User} from "../common/types/User";
 
-async function updatePasswordRoute(request: express.Request<LikeRouteParams, never, LikeBody>, response: express.Response) : Promise<express.Response> {
+async function likeRoute(request: express.Request<LikeRouteParams, never, never>, response: express.Response) : Promise<express.Response> {
     const { USER_NOT_FOUND, USER_ALREADY_LIKED, USER_ID_NOT_VALID, USER_SUCCESSFULLY_LIKED, USER_CANNOT_LIKE_THEMSELVES, INTERNAL_SERVER_ERROR } = responses;
     if(!isValid(request.params.id)) {
         return send(response, USER_ID_NOT_VALID);
@@ -30,5 +30,5 @@ export default (app: express.Application) : express.RequestHandler => {
     const security = Security.get();
 
     security.registerSecuredRoute(pattern, Method.POST);
-    return app.post(pattern, updatePasswordRoute)
+    return app.post(pattern, likeRoute)
 };

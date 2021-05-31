@@ -28,6 +28,24 @@ exports.seed = async function(knex) {
     true,
     true
   ]);
+  await knex.raw(sql, [
+    'test6@test.com',
+    'Test 6',
+    'Test 6',
+    keccak('keccak512').update('password').digest('hex'),
+    keccak('keccak512').update(`User registered at ${(new Date()).toISOString()}. Random ${Math.random()}`).digest('hex'),
+    true,
+    true
+  ]);
+  await knex.raw(sql, [
+    'test7@test.com',
+    'Test 7',
+    'Test 7',
+    keccak('keccak512').update('password').digest('hex'),
+    keccak('keccak512').update(`User registered at ${(new Date()).toISOString()}. Random ${Math.random()}`).digest('hex'),
+    true,
+    true
+  ]);
   return knex.raw(sql, [
     'test5@test.com',
     'Test 5',

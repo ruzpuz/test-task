@@ -246,6 +246,11 @@ async function likeUnknown() :Promise<void> {
     }
 }
 
+async function fetchMostLiked() {
+    const { status: loginStatus} : { status:Status} = await http.get(BaseURL + '/most-liked');
+    assert.strictEqual(loginStatus, Status.OK);
+}
+
 
 describe('Thorough application testing',function() :void {
     this.timeout(0);
@@ -268,4 +273,5 @@ describe('Thorough application testing',function() :void {
     it('User should be able to like another user', like);
     it('User cannot like same user twice', likeTwice);
     it('User cannot like user that does not exist', likeUnknown);
+    it('List most liked users', fetchMostLiked);
 });

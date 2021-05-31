@@ -27,7 +27,7 @@ export enum Method {
 export interface Response {
     status: Status;
     message?: string;
-    data?: Record<string, unknown>;
+    data?: Record<string, unknown> | Record<string, unknown> [];
 }
 export interface Responses {
     [key: string] : Response
