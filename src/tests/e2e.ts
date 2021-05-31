@@ -247,10 +247,44 @@ async function likeUnknown() :Promise<void> {
 }
 
 async function fetchMostLiked() {
-    const { status: loginStatus} : { status:Status} = await http.get(BaseURL + '/most-liked');
+    const { status: loginStatus} : { status:Status } = await http.get(BaseURL + '/most-liked');
     assert.strictEqual(loginStatus, Status.OK);
 }
 
+
+async function getUserByID() {
+
+    const { status: loginStatus, data: loginData1} : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', TEST_USER_2);
+    assert.strictEqual(loginStatus, Status.OK);
+
+    const id = loginData1.user.id;
+
+    const { status: getUserStatus } : { status: Status } = await http.get(`${BaseURL}/user/${id}`)
+    assert.strictEqual(getUserStatus, Status.OK);
+}
+
+async function getUserNotFound() {
+    try {
+        const { status: getUserStatus } : { status: Status } = await http.get(`${BaseURL}/user/${generateUUID()}`)
+
+        assert.notStrictEqual(getUserStatus, Status.OK);
+    } catch(error) {
+        const { response } = error as AxiosError;
+
+        assert.strictEqual(response.status, Status.NOT_FOUND);
+    }
+}
+async function getUserInvalidId() {
+    try {
+        const { status: getUserStatus } : { status: Status } = await http.get(`${BaseURL}/user/dsdasdsadda`)
+
+        assert.notStrictEqual(getUserStatus, Status.OK);
+    } catch(error) {
+        const { response } = error as AxiosError;
+
+        assert.strictEqual(response.status, Status.BAD_REQUEST);
+    }
+}
 describe('Thorough application testing',function() :void {
     this.timeout(0);
 
@@ -273,4 +307,7 @@ describe('Thorough application testing',function() :void {
     it('User cannot like same user twice', likeTwice);
     it('User cannot like user that does not exist', likeUnknown);
     it('List most liked users', fetchMostLiked);
+    it('Get user by id', getUserByID);
+    it('Get user by id - user not found ', getUserNotFound);
+    it('Get user by id - bad id provided ', getUserInvalidId);
 });

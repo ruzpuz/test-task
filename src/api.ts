@@ -12,5 +12,6 @@ export const routes: Array<string> = [
     'update-password/update-password.route',
     'like/like.route',
     'unlike/unlike.route',
-    'most-liked/most-liked.route'
+    'most-liked/most-liked.route',
+    'user-by-id/user-by-id.route'
 ];
