@@ -3,7 +3,7 @@ import {Response, Responses, Status} from './types/HTTP';
 
 export function send(res:express.Response, response: Response): express.Response {
     if(Array.isArray(response.data)) {
-        return res.status(response.status).json({ data: response.data });
+        return res.status(response.status).json(response.data);
     }
     return res.status(response.status).json({ message: response.message, ...response.data});
 }

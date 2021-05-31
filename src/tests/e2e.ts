@@ -251,7 +251,6 @@ async function fetchMostLiked() {
     assert.strictEqual(loginStatus, Status.OK);
 }
 
-
 describe('Thorough application testing',function() :void {
     this.timeout(0);
 
