@@ -14,11 +14,11 @@ function prepareData({ email, password }:Body) :Body{
 }
 
 export enum Status {
-    OK,
-    NOT_FOUND,
-    NOT_CONFIRMED,
-    DISABLED,
-    UNKNOWN_ERROR
+  OK,
+  NOT_FOUND,
+  NOT_CONFIRMED,
+  DISABLED,
+  UNKNOWN_ERROR
 }
 export interface Result {
     user?: User,
@@ -39,29 +39,28 @@ export async function login(body: Body): Promise<Result> {
   const database = Database.get();
 
   const findUserSQL = `
-      SELECT
-        u.id AS id,
-        u.first_name,
-        u.last_name,
-        u.email,
-        r.id AS role_id,
-        r.name AS role_name
-      FROM 
-        "public"."user" AS u
-      JOIN
-        "public"."users_roles" AS ur on ur.user_id = u.id
-      JOIN
-        "public"."role" AS r ON r.id = ur.role_id
-      WHERE 
-        u.email = ?`;
+    SELECT
+      u.id AS id,
+      u.first_name,
+      u.last_name,
+      u.email,
+      r.id AS role_id,
+      r.name AS role_name
+    FROM 
+      "public"."user" AS u
+    JOIN
+      "public"."users_roles" AS ur on ur.user_id = u.id
+    JOIN
+      "public"."role" AS r ON r.id = ur.role_id
+    WHERE 
+      u.email = ?`;
   const findUserSecurity = `
-      SELECT 
-        *
-      FROM 
-        "public"."security"
-      WHERE
-        user_id = ?
-    `;
+    SELECT 
+      *
+    FROM 
+      "public"."security"
+    WHERE
+      user_id = ? `;
 
   await database.transaction(async (t) => {
     const { rows: users, rowCount: count } = await t.raw(findUserSQL, email);

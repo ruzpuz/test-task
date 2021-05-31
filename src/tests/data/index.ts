@@ -1,4 +1,3 @@
-
 export default {
   TEST_USER_1: {
     firstName: 'Test 1',

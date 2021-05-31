@@ -60,5 +60,4 @@ function testInvalidBodies() {
 export default () : mocha.Suite => describe('Testing registration service', function() {
   it('Signup service validation - valid call', testValidBody);
   it('Signup service validation - invalid call', testInvalidBodies);
-
 });

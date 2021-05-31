@@ -4,11 +4,11 @@ import { DatabaseError } from 'pg';
 import { isUUID } from '../common/validation/uuid';
 
 export enum Status {
-    OK,
-    DUPLICATE,
-    NO_USER,
-    UNKNOWN_ERROR,
-    SELF_LIKE
+  OK,
+  DUPLICATE,
+  NO_USER,
+  UNKNOWN_ERROR,
+  SELF_LIKE
 }
 export function isValid(id: string) : boolean {
   return isUUID(id);
