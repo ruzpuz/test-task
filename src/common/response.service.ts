@@ -28,4 +28,5 @@ export const responses: Responses = {
     USER_ID_NOT_VALID: { status: Status.BAD_REQUEST, message: 'Invalid user id' },
     USER_SUCCESSFULLY_LIKED: { status: Status.OK, message: 'User successfully liked' },
     USER_ALREADY_LIKED: { status: Status.CONFLICT, message: 'User already liked' },
+    USER_CANNOT_LIKE_THEMSELVES: { status: Status.BAD_REQUEST, message: 'You cannot like yourself' },
 }

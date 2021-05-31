@@ -2,7 +2,6 @@ import assert from 'assert';
 import { isValid } from './signup.controller';
 import { Body } from './signup.dto';
 import mocha from "mocha";
-import {patternValidation} from "../common/validation/pattern";
 
 const validBody: Body = {
     email: 's@sas.com',

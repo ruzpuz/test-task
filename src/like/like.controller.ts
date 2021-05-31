@@ -7,16 +7,20 @@ export enum Status {
     OK,
     DUPLICATE,
     NO_USER,
-    UNKNOWN_ERROR
+    UNKNOWN_ERROR,
+    SELF_LIKE
 }
 export function isValid(id: string) : boolean {
     return isUUID(id);
 }
 export async function like({ id: who } :User, whom:string) : Promise<Status> {
+    if(who === whom) {
+        return Status.SELF_LIKE;
+    }
     const database = Database.get();
     const sql = `
         INSERT INTO
-          "public"."likes" (who, whom)
+          "public"."like" (who, whom)
         VALUES (?, ?) ;
     `;
     try {

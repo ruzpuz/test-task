@@ -8,6 +8,7 @@ import data from './data';
 import { Database } from "../common/database/Database";
 import {LoginResponseData} from "../login/login.dto";
 import {RefreshTokenResponseData} from 'security/refresh-token/refresh-token.dto';
+import {generateUUID} from "../common/validation/uuid";
 
 dotenv.config();
 
@@ -167,6 +168,85 @@ async function updatePassword() :Promise<void> {
     assert.strictEqual(newloginStatus, Status.OK);
 }
 
+async function selfLike() :Promise<void> {
+    const { status: loginStatus, data } : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', TEST_USER_2);
+    assert.strictEqual(loginStatus, Status.OK);
+
+    const token = data.accessToken;
+    try {
+        const { status: passwordUpdateStatus  } : { status:Status, data: LoginResponseData} =
+            await http.post(BaseURL + `/user/${data.user.id}/like`,
+                { },
+                {    headers: { Authorization: `Bearer ${token}` } });
+        assert.notStrictEqual(passwordUpdateStatus, Status.OK);
+    } catch(error) {
+        const { response } = error as AxiosError;
+
+        assert.strictEqual(response.status, Status.BAD_REQUEST);
+    }
+}
+async function like() :Promise<void> {
+    const { status: loginStatus, data: loginData1} : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', TEST_USER_2);
+    assert.strictEqual(loginStatus, Status.OK);
+
+    const { status: loginStatus2, data: loginData2 } : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', TEST_USER_3);
+    assert.strictEqual(loginStatus2, Status.OK);
+
+    const id = loginData1.user.id;
+    const token = loginData2.accessToken;
+
+    const { status: likeStatus  } : { status:Status, data: LoginResponseData} =
+        await http.post(BaseURL + `/user/${id}/like`,
+            { },
+            {    headers: { Authorization: `Bearer ${token}` } });
+    assert.strictEqual(likeStatus, Status.OK);
+
+}
+
+async function likeTwice() :Promise<void> {
+    const { status: loginStatus, data: loginData1} : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', TEST_USER_2);
+    assert.strictEqual(loginStatus, Status.OK);
+
+    const { status: loginStatus2, data: loginData2 } : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', TEST_USER_3);
+    assert.strictEqual(loginStatus2, Status.OK);
+
+    const id = loginData1.user.id;
+    const token = loginData2.accessToken;
+
+    try {
+        const { status: likeStatus  } : { status:Status, data: LoginResponseData} =
+            await http.post(BaseURL + `/user/${id}/like`,
+                { },
+                {    headers: { Authorization: `Bearer ${token}` } });
+        assert.notStrictEqual(likeStatus, Status.OK);
+    } catch(error) {
+        const { response } = error as AxiosError;
+
+        assert.strictEqual(response.status, Status.CONFLICT);
+    }
+}
+
+async function likeUnknown() :Promise<void> {
+    const { status: loginStatus, data: loginData} : { status:Status, data: LoginResponseData} = await http.post(BaseURL + '/login', TEST_USER_2);
+    assert.strictEqual(loginStatus, Status.OK);
+
+    const id = generateUUID();
+    const token = loginData.accessToken;
+
+    try {
+        const { status: likeStatus  } : { status:Status, data: LoginResponseData} =
+            await http.post(BaseURL + `/user/${id}/like`,
+                { },
+                {    headers: { Authorization: `Bearer ${token}` } });
+        assert.notStrictEqual(likeStatus, Status.OK);
+    } catch(error) {
+        const { response } = error as AxiosError;
+
+        assert.strictEqual(response.status, Status.NOT_FOUND);
+    }
+}
+
+
 describe('Thorough application testing',function() :void {
     this.timeout(0);
 
@@ -184,4 +264,8 @@ describe('Thorough application testing',function() :void {
     it('Logged in user can access to secured route', loggedUserFetchSecured);
     it('User should be able to refresh token after it is expired', testingTokenRefreshing);
     it('User should be able to update their password, and login with new password', updatePassword);
+    it('User should not be able to like themself', selfLike);
+    it('User should be able to like another user', like);
+    it('User cannot like same user twice', likeTwice);
+    it('User cannot like user that does not exist', likeUnknown);
 });
