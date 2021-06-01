@@ -21,6 +21,7 @@ const { TEST_USER_1, TEST_USER_2, TEST_USER_3, TEST_USER_4, TEST_USER_5 } = data
 function delay(time: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
+
 function startApplication(): void {
   assert.doesNotThrow(async () => {
     const app = new App();
